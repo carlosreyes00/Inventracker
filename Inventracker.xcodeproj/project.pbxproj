@@ -13,6 +13,7 @@
 		12D7EEA029DB57BB00D28196 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D7EE9F29DB57BB00D28196 /* Preview Assets.xcassets */; };
 		12D7EEA229DB57BB00D28196 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D7EEA129DB57BB00D28196 /* Persistence.swift */; };
 		12D7EEA529DB57BB00D28196 /* Inventracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12D7EEA329DB57BB00D28196 /* Inventracker.xcdatamodeld */; };
+		12D7EEAC29DB5BF400D28196 /* NewIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D7EEAB29DB5BF400D28196 /* NewIngredient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		12D7EE9F29DB57BB00D28196 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		12D7EEA129DB57BB00D28196 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		12D7EEA429DB57BB00D28196 /* Inventracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Inventracker.xcdatamodel; sourceTree = "<group>"; };
+		12D7EEAB29DB5BF400D28196 /* NewIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIngredient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 		12D7EE9729DB57BA00D28196 /* Inventracker */ = {
 			isa = PBXGroup;
 			children = (
+				12D7EEAD29DB5D3200D28196 /* Views */,
 				12D7EE9829DB57BA00D28196 /* InventrackerApp.swift */,
 				12D7EE9A29DB57BA00D28196 /* ContentView.swift */,
 				12D7EE9C29DB57BB00D28196 /* Assets.xcassets */,
@@ -71,6 +74,14 @@
 				12D7EE9F29DB57BB00D28196 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		12D7EEAD29DB5D3200D28196 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				12D7EEAB29DB5BF400D28196 /* NewIngredient.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +157,7 @@
 				12D7EEA229DB57BB00D28196 /* Persistence.swift in Sources */,
 				12D7EEA529DB57BB00D28196 /* Inventracker.xcdatamodeld in Sources */,
 				12D7EE9B29DB57BA00D28196 /* ContentView.swift in Sources */,
+				12D7EEAC29DB5BF400D28196 /* NewIngredient.swift in Sources */,
 				12D7EE9929DB57BA00D28196 /* InventrackerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
