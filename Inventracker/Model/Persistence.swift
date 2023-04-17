@@ -13,10 +13,24 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for index in 0..<10 {
-            let newIngredient = Ingredient(context: viewContext)
-            newIngredient.name = "ingredient number \(index)"
+        
+        for index in 0..<5 {
+            let newRecipe = Recipe(context: viewContext)
+            newRecipe.name = "recipe number \(index)"
+
+            var set: NSSet = NSSet()
+
+            let r = Int.random(in: 1...3)
+
+            for index in 1...r {
+                let ingredient = Ingredient(context: viewContext)
+                ingredient.name = "Ingredient No. \(Int.random(in: 1...3))"
+                ingredient.quantity = Double(index) * 100
+                set = set.adding(ingredient) as NSSet
+            }
+            newRecipe.ingredients? = set
         }
+        
         do {
             try viewContext.save()
         } catch {
@@ -51,7 +65,6 @@ struct PersistenceController {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-//        container.viewContext.automaticallyMergesChangesFromParent = true
         container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
     }
 }
