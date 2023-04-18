@@ -35,8 +35,6 @@ struct Managment: View {
         animation: .default)
     private var slots: FetchedResults<Slot>
     
-    @State private var isShowingDialogToDelete = false
-    
     var body: some View {
         List {
             Section {
@@ -46,29 +44,17 @@ struct Managment: View {
                 Text("sales: \(sales.count)")
                 Text("slots: \(slots.count)")
                 
+                Button {
+                    addProductsToTesting()
+                } label: {
+                    Text("Add products to testing")
+                }
+                
                 Button(role: .destructive) {
-                    isShowingDialogToDelete = true
+                    deleteProductsToTesting()
                 } label: {
                     Text("Delete everything")
                 }
-                .confirmationDialog("Delete Data Completely", isPresented: $isShowingDialogToDelete, actions: {
-                    Button("Confirm", role: .destructive) {
-                        deleteObjects(objects: ingredients, context: viewContext)
-                        deleteObjects(objects: purchases, context: viewContext)
-                        deleteObjects(objects: recipes, context: viewContext)
-                        deleteObjects(objects: sales, context: viewContext)
-                        deleteObjects(objects: slots, context: viewContext)
-                        
-                        saveContext(context: viewContext)
-                    }
-                    
-                    Button("Cancel", role: .cancel) {
-                        isShowingDialogToDelete = false
-                    }
-                }, message: {
-                    Text("Are you sure to delete the data completely?")
-                })
-                
             } header: {
                 Text("Control Center")
             }
@@ -76,10 +62,12 @@ struct Managment: View {
             Section {
                 ForEach(slots, id: \.self) { slot in
                     HStack {
-                        Text(slot.name ?? "no name :(")
+                        Text(slot.name ?? "no name")
                         Spacer()
-                        let availableQuantity = Measurement(value: slot.availableQuantity, unit: UnitMass.grams)
-                        Text(availableQuantity, format: .measurement(width: .wide, usage: .asProvided))
+                        HStack {
+                            Text(slot.availableQuantity, format: .number.decimalSeparator(strategy: .automatic))
+                            Text(slot.unitOfMeasure.rawValue)
+                        }
                     }
                 }
             } header: {

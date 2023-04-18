@@ -25,10 +25,10 @@ extension Ingredient {
     
 }
 
-extension Ingredient {    
+extension Ingredient {
     var unitOfMeasure: UnitOfMeasure {
         get {
-            return UnitOfMeasure(rawValue: String(self.unitOfMeasureValue))!
+            return UnitOfMeasure(rawValue: String(self.unitOfMeasureValue)) ?? .grams
         }
         set {
             self.unitOfMeasureValue = String(newValue.rawValue)
@@ -41,7 +41,7 @@ extension Ingredient {
             
             let fetchRequest = Purchase.fetchRequest()
             fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Purchase.date, ascending: true)]
-            fetchRequest.predicate = NSPredicate(format: "slot.name = %@", self.name!)
+            fetchRequest.predicate = NSPredicate(format: "slot.name = %@", self.name ?? "no name")
             
             let purchases: [Purchase]
             

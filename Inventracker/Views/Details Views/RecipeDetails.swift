@@ -13,30 +13,22 @@ struct RecipeDetails: View {
     @State private var showNewIngredientView = false
     
     var body: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    List {
-                        if let ingredients = recipe.ingredients?.allObjects as? [Ingredient] {
-                            ForEach(ingredients, id: \.self) {
-                                IngredientInfo(ingredient: $0)
-                            }
-                        }
-                    }
-                } header: {
-                    Text("Ingredients")
+        List {
+            if let ingredients = recipe.ingredients?.allObjects as? [Ingredient] {
+                ForEach(ingredients, id: \.self) {
+                    IngredientInfo(ingredient: $0)
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button {
-                        showNewIngredientView = true
-                    } label: {
-                        Label("New Ingredient", systemImage: "plus")
-                    }
-                    .sheet(isPresented: $showNewIngredientView) {
-                        NewIngredient(recipe: recipe)
-                    }
+        }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    showNewIngredientView = true
+                } label: {
+                    Label("New Ingredient", systemImage: "plus")
+                }
+                .sheet(isPresented: $showNewIngredientView) {
+                    NewIngredient(recipe: recipe)
                 }
             }
         }
@@ -45,16 +37,20 @@ struct RecipeDetails: View {
 
 struct IngredientInfo: View {
     
-    let ingredient: Ingredient
+    @ObservedObject var ingredient: Ingredient
     
     var body: some View {
         HStack {
-            Text(ingredient.name ?? "no name")
-            Spacer()
-            VStack {
-                Text(String(ingredient.quantity) + " " + ingredient.unitOfMeasure.rawValue)
-                Text("$" + String(ingredient.cost))
+            VStack(alignment: .leading) {
+                Text(ingredient.name ?? "no name")
+                    .bold()
+                HStack {
+                    Text(ingredient.quantity, format: .number.decimalSeparator(strategy: .automatic))
+                    Text(ingredient.unitOfMeasure.rawValue)
+                }
             }
+            Spacer()
+            Text(ingredient.cost, format: .currency(code: "USD"))
         }
     }
 }

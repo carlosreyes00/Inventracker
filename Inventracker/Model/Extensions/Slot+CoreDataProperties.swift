@@ -19,7 +19,8 @@ extension Slot {
     @NSManaged public var id: UUID?
     @NSManaged public var name: String?
     @NSManaged public var purchases: NSSet?
-
+    @NSManaged public var unitOfMeasureValue: String
+    
 }
 
 // MARK: Generated accessors for purchases
@@ -44,6 +45,15 @@ extension Slot {
         get {
             let sum = self.purchases?.reduce(0) { $0 + ($1 as! Purchase).quantity }
             return sum!
+        }
+    }
+    
+    var unitOfMeasure: UnitOfMeasure {
+        get {
+            return UnitOfMeasure(rawValue: String(self.unitOfMeasureValue))!
+        }
+        set {
+            self.unitOfMeasureValue = String(newValue.rawValue)
         }
     }
 }

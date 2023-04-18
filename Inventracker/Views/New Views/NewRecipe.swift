@@ -14,26 +14,21 @@ struct NewRecipe: View {
     @State var name: String = ""
     
     var body: some View {
-        Form {
-            Section {
-                TextField("Name of Recipe", text: $name)
-                    .textFieldStyle(.automatic)
-            }
-            
-            Section {
-                Button("Add recipe") {
-                    if name.isEmpty {
-                        return
-                    }
-                    let recipe = Recipe(context: viewContext)
-                    recipe.name = name
-                    
-                    saveContext(context: viewContext)
-                    
-                    dismiss()
+        NavigationStack {
+            Form {
+                Section {
+                    TextField("Name of Recipe", text: $name)
+                        .textFieldStyle(.automatic)
                 }
-            } footer: {
-                Text("Press to add a new recipe")
+            }
+            .toolbar {
+                ToolbarItem {
+                    Button("Add recipe") {
+                        let _ = createRecipe(name: name, in: viewContext)
+                        dismiss()
+                    }
+                    .disabled(name.isEmpty)
+                }
             }
         }
     }

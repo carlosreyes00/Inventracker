@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1205272229E4933100773336 /* Sales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1205272129E4933100773336 /* Sales.swift */; };
+		12132F8629ED80160065A51D /* Recipe+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12132F8429ED80160065A51D /* Recipe+CoreDataClass.swift */; };
+		12132F8729ED80160065A51D /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12132F8529ED80160065A51D /* Recipe+CoreDataProperties.swift */; };
 		12355C8129DF126000E9E1AE /* Purchases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12355C8029DF126000E9E1AE /* Purchases.swift */; };
 		12355C8329DF12B200E9E1AE /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12355C8229DF12B200E9E1AE /* Recipes.swift */; };
 		12355C8629DF14A600E9E1AE /* ContextManagment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12355C8529DF14A600E9E1AE /* ContextManagment.swift */; };
@@ -31,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		1205272129E4933100773336 /* Sales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sales.swift; sourceTree = "<group>"; };
+		12132F8429ED80160065A51D /* Recipe+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataClass.swift"; sourceTree = "<group>"; };
+		12132F8529ED80160065A51D /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		12355C8029DF126000E9E1AE /* Purchases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchases.swift; sourceTree = "<group>"; };
 		12355C8229DF12B200E9E1AE /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		12355C8529DF14A600E9E1AE /* ContextManagment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextManagment.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				12D2A27829E70A2C007CE4AA /* Ingredient+CoreDataProperties.swift */,
 				1247471529E70CB400A7623D /* Slot+CoreDataClass.swift */,
 				1247471629E70CB400A7623D /* Slot+CoreDataProperties.swift */,
+				12132F8429ED80160065A51D /* Recipe+CoreDataClass.swift */,
+				12132F8529ED80160065A51D /* Recipe+CoreDataProperties.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -237,8 +243,10 @@
 			files = (
 				12355C8129DF126000E9E1AE /* Purchases.swift in Sources */,
 				1247471729E70CB400A7623D /* Slot+CoreDataClass.swift in Sources */,
+				12132F8629ED80160065A51D /* Recipe+CoreDataClass.swift in Sources */,
 				12F1999029DCAA28000C57B4 /* NewRecipe.swift in Sources */,
 				12D7EEA229DB57BB00D28196 /* Persistence.swift in Sources */,
+				12132F8729ED80160065A51D /* Recipe+CoreDataProperties.swift in Sources */,
 				1205272229E4933100773336 /* Sales.swift in Sources */,
 				12D2A27229E7052B007CE4AA /* Enums.swift in Sources */,
 				12D7EEA529DB57BB00D28196 /* Inventracker.xcdatamodeld in Sources */,

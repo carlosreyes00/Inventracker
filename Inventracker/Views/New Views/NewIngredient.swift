@@ -17,73 +17,39 @@ struct NewIngredient: View {
     
     @State var recipe: Recipe
     
-    @State var wrongNumberFormat = false
+    @State var wrongQuantityFormat = false
     
     var body: some View {
-        Form {
-            TextField("New Ingredient", text: $name)
-            
-            TextField("Quantity", text: .init(get: {
-                quantity
-            }, set: { value in
-                quantity = value
+        NavigationStack {
+            Form {
+                TextField("New Ingredient", text: $name)
                 
-                if let firstPointIndex = value.firstIndex(of: ".") {
-                    if value[firstPointIndex...].dropFirst().contains(".") {
-                        quantity.removeLast()
-                        return
+                DecimalTextField(name: "Quantity", decimal: $quantity, wrongDecimalFormat: $wrongQuantityFormat)
+                
+                Section {
+                    Picker("Unit of Measure", selection: $unitOfMeasure) {
+                        ForEach(UnitOfMeasure.allCases, id: \.self) {
+                            Text("\($0.rawValue)")
+                        }
                     }
-                }
-                
-                if Double(value) != nil {
-                    wrongNumberFormat = false
-                } else {
-                    wrongNumberFormat = true
-                }
-            }))
-            .keyboardType(.decimalPad)
-            
-            Picker("Unit of Measure", selection: $unitOfMeasure) {
-                ForEach(UnitOfMeasure.allCases, id: \.self) {
-                    Text("\($0.rawValue)")
+                    .pickerStyle(.menu)
                 }
             }
-            .pickerStyle(.menu)
-            
-            Section {
-                Button {
-                    if name.isEmpty || quantity.isEmpty {
-                        return
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        addIngredient(name: name, quantity: Double(quantity)!, unitOfMeasure: unitOfMeasure, to: recipe, in: viewContext)
+                        
+                        name.removeAll()
+                        quantity.removeAll()
+                        
+                        dismiss()
+                    } label: {
+                        Label("Add to \(recipe.name!)", systemImage: "plus.circle")
+                            .labelStyle(.titleOnly)
                     }
-                    
-                    let ingredient = Ingredient(context: viewContext)
-                    ingredient.name = name
-                    ingredient.quantity = Double(quantity) ?? -1.00
-                    ingredient.unitOfMeasure = unitOfMeasure
-                    ingredient.recipe = recipe
-                    
-                    let slot = Slot(context: viewContext)
-                    slot.name = name
-                    
-                    saveContext(context: viewContext)
-                    
-                    name.removeAll()
-                    quantity.removeAll()
-                    
-                    dismiss()
-                } label: {
-                    Label("Add to \(recipe.name!)", systemImage: "plus.circle")
-                        .labelStyle(.titleOnly)
+                    .disabled(name.isEmpty || wrongQuantityFormat)
                 }
-                .disabled(wrongNumberFormat)
-            } footer: {
-                Text("Press to add a new ingredient to \(recipe.name!)")
-            }
-            
-            Section {
-                Text(String(Double(quantity) ?? 11111))
-                    .foregroundColor(wrongNumberFormat ? .red : .green)
-                    .font(.largeTitle)
             }
         }
     }
@@ -97,5 +63,32 @@ struct NewIngredient_Previews: PreviewProvider {
         newRecipe.name = "Preview Recipe"
         
         return NewIngredient(recipe: newRecipe)
+    }
+}
+
+struct DecimalTextField: View {
+    var name: String
+    @Binding var decimal: String
+    @Binding var wrongDecimalFormat: Bool
+    
+    var body: some View {
+        TextField(name, text: .init(get: {
+            decimal
+        }, set: { value in
+            decimal = value
+            
+            if let firstPointIndex = value.firstIndex(of: ".") {
+                if value[firstPointIndex...].dropFirst().contains(".") {
+                    decimal.removeLast()
+                }
+            }
+            
+            if Double(decimal) != nil {
+                wrongDecimalFormat = false
+            } else {
+                wrongDecimalFormat = true
+            }
+        }))
+        .keyboardType(.decimalPad)
     }
 }

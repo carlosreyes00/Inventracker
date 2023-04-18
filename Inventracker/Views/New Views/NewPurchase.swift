@@ -15,42 +15,43 @@ struct NewPurchase: View {
     @State private var price = ""
     @State private var quantity = ""
     
+    @State private var wrongPriceFormat = true
+    @State private var wrongQuantityFormat = true
+    
     @State var slots: [Slot]
     
     @State var slot: Slot
     
     var body: some View {
-        Form {
-            Picker("Ingredient", selection: $slot) {
-                ForEach(slots, id: \.self) { slot in
-                    Text("\(slot.name!)").tag(slot.name!)
+        NavigationStack {
+            Form {
+                Picker("Ingredient", selection: $slot) {
+                    ForEach(slots, id: \.self) { slot in
+                        Text("\(slot.name!)").tag(slot.name!)
+                    }
                 }
+                
+                DatePicker("Date", selection: $date)
+                
+                DecimalTextField(name: "Price", decimal: $price, wrongDecimalFormat: $wrongPriceFormat)
+                DecimalTextField(name: "Quantity", decimal: $quantity, wrongDecimalFormat: $wrongQuantityFormat)
             }
-            
-            DatePicker("Date", selection: $date)
-            TextField("Price", text: $price)
-            TextField("Quantity", text: $quantity)
-            
-            Button {
-                if price.isEmpty || quantity.isEmpty {
-                    return
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        addPurchase(date: date, price: Double(price)!, quantity: Double(quantity)!, slot: slot, in: viewContext)
+                        
+                        date = Date()
+                        price.removeAll()
+                        quantity.removeAll()
+                        
+                        dismiss()
+                    } label: {
+                        Label("Add", systemImage: "plus.circle")
+                            .labelStyle(.titleOnly)
+                    }
+                    .disabled(wrongPriceFormat || wrongQuantityFormat)
                 }
-                
-                let purchase = Purchase(context: viewContext)
-                purchase.date = date
-                purchase.price = Double(price) ?? -1
-                purchase.slot = slot
-                purchase.quantity = Double(quantity) ?? -1
-                
-                saveContext(context: viewContext)
-                
-                date = Date()
-                price.removeAll()
-                quantity.removeAll()
-                
-                dismiss()
-            } label: {
-                Label("Add Purchase", systemImage: "plus.circle")
             }
         }
     }

@@ -57,7 +57,7 @@ struct Purchases: View {
                             Button {
                                 purchases.nsPredicate = NSPredicate(format: "slot.name = %@", slot.name!)
                             } label: {
-                                Text("\(slot.name!)")
+                                Text("\(slot.name!) (\(slot.purchases?.count ?? -1))")
                             }
                         }
                     } label: {
@@ -83,8 +83,10 @@ struct PurchaseInfo: View {
             Spacer()
             VStack (alignment: .trailing) {
                 Text(purchase.price, format: .currency(code: "USD"))
-                let weight = Measurement(value: purchase.quantity, unit: UnitMass.grams)
-                Text(weight, format: .measurement(width: .wide, usage: .asProvided))
+                HStack {
+                    Text(purchase.quantity, format: .number.decimalSeparator(strategy: .automatic))
+                    Text(purchase.slot?.unitOfMeasure.rawValue ?? "-1")
+                }
             }
         }
     }

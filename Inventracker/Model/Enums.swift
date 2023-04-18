@@ -12,4 +12,6 @@ enum UnitOfMeasure: String, CaseIterable {
     case mililiters = "ml"
     case cup = "cup"
     case units = "units"
+    case tbsp = "tbsp"
+    case tsp = "tsp"
 }

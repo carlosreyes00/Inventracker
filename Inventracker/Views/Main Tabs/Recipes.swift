@@ -33,10 +33,6 @@ struct Recipes: View {
             .listStyle(.inset)
             .navigationTitle("Recipes")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                        .disabled(recipes.count == 0)
-                }
                 ToolbarItem {
                     Button {
                         showingNewRecipe = true
@@ -66,11 +62,15 @@ struct RecipeInfo: View {
     var body: some View {
         VStack (alignment: .leading) {
             Text(recipe.name ?? "no name")
+                .font(.title3)
                 .bold()
-            Text("ingredients count: \(recipe.ingredients?.count ?? -1)")
+            Text("\(recipe.ingredients?.count ?? -1) ingredients")
+            Text(recipe.cost, format: .currency(code: "USD"))
         }
     }
 }
+
+
 
 struct Recipes_Previews: PreviewProvider {
     static var previews: some View {
