@@ -43,17 +43,29 @@ struct Managment: View {
                 Text("recipes: \(recipes.count)")
                 Text("sales: \(sales.count)")
                 Text("slots: \(slots.count)")
-                
+            } header: {
+                Text("Entities")
+            }
+            
+            Section {
                 Button {
                     addProductsToTesting()
                 } label: {
                     Text("Add products to testing")
+                        .foregroundColor(.blue)
                 }
                 
                 Button(role: .destructive) {
                     deleteProductsToTesting()
                 } label: {
                     Text("Delete everything")
+                }
+                
+                Button {
+                    deleteProductsToTesting()
+                    addProductsToTesting()
+                } label: {
+                    Text("Refresh")
                 }
             } header: {
                 Text("Control Center")
@@ -65,7 +77,7 @@ struct Managment: View {
                         Text(slot.name ?? "no name")
                         Spacer()
                         HStack {
-                            Text(slot.availableQuantity, format: .number.decimalSeparator(strategy: .automatic))
+                            Text(slot.quantity, format: .number.decimalSeparator(strategy: .automatic))
                             Text(slot.unitOfMeasure.rawValue)
                         }
                     }

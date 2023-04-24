@@ -20,9 +20,10 @@ extension Ingredient {
     @NSManaged public var id: UUID?
     @NSManaged public var name: String?
     @NSManaged public var quantity: Double
+    @NSManaged public var neededQuantity: Double
     @NSManaged public var unitOfMeasureValue: String
     @NSManaged public var recipe: Recipe?
-    
+    @NSManaged public var thereIsEnough: Bool
 }
 
 extension Ingredient {
@@ -40,8 +41,12 @@ extension Ingredient {
             let viewContext = PersistenceController.shared.container.viewContext
             
             let fetchRequest = Purchase.fetchRequest()
+            
+            let predicateSlot = NSPredicate(format: "slot.name = %@", self.name ?? "no name")
+            let predicateIsFullyUsed = NSPredicate(format: "isFullyUsed = %@", false as NSNumber)
+            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateSlot, predicateIsFullyUsed])
+            
             fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Purchase.date, ascending: true)]
-            fetchRequest.predicate = NSPredicate(format: "slot.name = %@", self.name ?? "no name")
             
             let purchases: [Purchase]
             
@@ -51,19 +56,22 @@ extension Ingredient {
                 fatalError(error.localizedDescription)
             }
             
-            var rest = self.quantity
+            neededQuantity = self.quantity
             var value = 0.0
             
             purchases.forEach({ purchase in
                 let pricePerUnit = purchase.price / purchase.quantity
-                let toUse = Double.minimum(rest, purchase.quantity)
+                let toUse = Double.minimum(neededQuantity, purchase.availableQuantity)
                 
-                rest -= toUse
+                neededQuantity -= toUse
                 value += pricePerUnit * toUse
                 
-                if rest <= 0 {
+                if neededQuantity <= 0 {
+                    thereIsEnough = true
+                    neededQuantity = 0
                     return
                 }
+                thereIsEnough = false
             })
             
             return value

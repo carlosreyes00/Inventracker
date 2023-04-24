@@ -34,9 +34,6 @@ struct Purchases: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
-                        if slots.count == 0 {
-                            return
-                        }
                         showNewPurchaseView = true
                     } label: {
                         Label("New Purchase", systemImage: "plus")
@@ -44,6 +41,7 @@ struct Purchases: View {
                     .sheet(isPresented: $showNewPurchaseView) {
                         NewPurchase(slots: Array(slots), slot: slots.first!)
                     }
+                    .disabled(slots.count == 0)
                 }
                 
                 ToolbarItem (placement: .automatic) {
@@ -83,10 +81,13 @@ struct PurchaseInfo: View {
             Spacer()
             VStack (alignment: .trailing) {
                 Text(purchase.price, format: .currency(code: "USD"))
-                HStack {
+                HStack(spacing: 2) {
+                    Text(purchase.availableQuantity, format: .number.decimalSeparator(strategy: .automatic))
+                    Text("/")
                     Text(purchase.quantity, format: .number.decimalSeparator(strategy: .automatic))
                     Text(purchase.slot?.unitOfMeasure.rawValue ?? "-1")
                 }
+                .foregroundColor(purchase.isFullyUsed ? .red : .primary)
             }
         }
     }
@@ -94,6 +95,20 @@ struct PurchaseInfo: View {
 
 struct Purchases_Previews: PreviewProvider {
     static var previews: some View {
-        Purchases()
+        let previewContext = PersistenceController.preview.container.viewContext
+        
+        let newSlot = Slot(context: previewContext)
+        newSlot.name = "Chocolate"
+        newSlot.unitOfMeasure = .grams
+        
+        let newPurchase = Purchase(context: previewContext)
+        newPurchase.date = Date()
+        newPurchase.price = 9.99
+        newPurchase.quantity = 40
+        newPurchase.availableQuantity = 25
+        newPurchase.isFullyUsed = false
+        newPurchase.slot = newSlot
+        
+        return PurchaseInfo(purchase: newPurchase)
     }
 }

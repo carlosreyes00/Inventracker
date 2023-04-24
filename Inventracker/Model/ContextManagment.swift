@@ -45,7 +45,7 @@ func addIngredient(name: String, quantity: Double, unitOfMeasure: UnitOfMeasure,
     newIngredient.quantity = quantity
     newIngredient.unitOfMeasure = unitOfMeasure
     
-//    newIngredient.recipe = recipe
+//        newIngredient.recipe = recipe
     
     recipe.addToIngredients(newIngredient)
     
@@ -62,6 +62,14 @@ func addPurchase(date: Date, price: Double, quantity: Double, slot: Slot, in con
     purchase.price = price
     purchase.slot = slot
     purchase.quantity = quantity
+    
+//    purchase.availableQuantity = quantity
+//    purchase.isFullyUsed = false
+    
+    // last added to testing
+    purchase.isFullyUsed = false
+    purchase.availableQuantity = purchase.isFullyUsed ? 0 : Double(Int.random(in: 1...Int(purchase.quantity / 1.5)))
+    // last added to testing
     
     saveContext(context: context)
 }
@@ -81,9 +89,15 @@ func addProductsToTesting(in context: NSManagedObjectContext = PersistenceContro
     addIngredient(name: "Sugar", quantity: 200, unitOfMeasure: .grams, to: merengue)
     addIngredient(name: "Vanilla", quantity: 10, unitOfMeasure: .grams, to: merengue)
     
+    let brownie = createRecipe(name: "Brownie")
+    addIngredient(name: "Eggs", quantity: 4, unitOfMeasure: .units, to: brownie)
+    addIngredient(name: "Sugar", quantity: 170, unitOfMeasure: .grams, to: brownie)
+    addIngredient(name: "Chocolate", quantity: 200, unitOfMeasure: .grams, to: brownie)
+    addIngredient(name: "Honey", quantity: 21, unitOfMeasure: .grams, to: brownie)
+    
     let request: NSFetchRequest<Slot> = NSFetchRequest(entityName: "Slot")
     var slots: [Slot]
-
+    
     do {
         request.predicate = NSPredicate(format: "name == %@", "Eggs")
         slots = try context.fetch(request)
@@ -94,7 +108,7 @@ func addProductsToTesting(in context: NSManagedObjectContext = PersistenceContro
     } catch {
         print("Error fetching Eggs slot ]--> \(error)")
     }
-
+    
     do {
         request.predicate = NSPredicate(format: "name == %@", "Sugar")
         slots = try context.fetch(request)
@@ -104,7 +118,7 @@ func addProductsToTesting(in context: NSManagedObjectContext = PersistenceContro
     } catch {
         print("Error fetching Sugar slot ]--> \(error)")
     }
-
+    
     do {
         request.predicate = NSPredicate(format: "name == %@", "Vanilla")
         slots = try context.fetch(request)
@@ -113,36 +127,54 @@ func addProductsToTesting(in context: NSManagedObjectContext = PersistenceContro
     } catch {
         print("Error fetching Vanilla slot ]--> \(error)")
     }
+    
+    do {
+        request.predicate = NSPredicate(format: "name == %@", "Chocolate")
+        slots = try context.fetch(request)
+        addPurchase(date: Date(), price: 50, quantity: 25, slot: slots.first!)
+        addPurchase(date: Date(), price: 2, quantity: 50, slot: slots.first!)
+    } catch {
+        print("Error fetching Chocolate slot ]--> \(error)")
+    }
+    
+    do {
+        request.predicate = NSPredicate(format: "name == %@", "Honey")
+        slots = try context.fetch(request)
+        addPurchase(date: Date(), price: 5, quantity: 150, slot: slots.first!)
+        addPurchase(date: Date(), price: 2, quantity: 50, slot: slots.first!)
+    } catch {
+        print("Error fetching Honey slot ]--> \(error)")
+    }
 }
 
 //func addProductsToTesting(in context: NSManagedObjectContext = PersistenceController.shared.container.viewContext) {
-    //    let brownieRecipe = createRecipe(name: "Brownie")
-    //    addIngredient(name: "Butter", quantity: 200, unitOfMeasure: .grams, to: brownieRecipe)
-    //    addIngredient(name: "Sugar", quantity: 170, unitOfMeasure: .grams, to: brownieRecipe)
-    //    addIngredient(name: "Eggs", quantity: 4, unitOfMeasure: .units, to: brownieRecipe)
-    //    addIngredient(name: "Honey", quantity: 21, unitOfMeasure: .grams, to: brownieRecipe)
-    //    addIngredient(name: "Flour", quantity: 170, unitOfMeasure: .grams, to: brownieRecipe)
-    //    addIngredient(name: "Cacao", quantity: 70, unitOfMeasure: .grams, to: brownieRecipe)
-    //    addIngredient(name: "Baking Powder", quantity: 4, unitOfMeasure: .grams, to: brownieRecipe)
-    //    addIngredient(name: "Salt", quantity: 3, unitOfMeasure: .grams, to: brownieRecipe)
-    //    addIngredient(name: "Nuts", quantity: 37.6, unitOfMeasure: .grams, to: brownieRecipe)
-    //    addIngredient(name: "Sirope", quantity: 150, unitOfMeasure: .grams, to: brownieRecipe)
-    //    addIngredient(name: "Box", quantity: 1, unitOfMeasure: .units, to: brownieRecipe)
-    //    addIngredient(name: "Sticker", quantity: 1, unitOfMeasure: .units, to: brownieRecipe)
-    //
-    //    let cookiesRecipe = createRecipe(name: "Cookies")
-    //    addIngredient(name: "Butter", quantity: 100, unitOfMeasure: .grams, to: cookiesRecipe)
-    //    addIngredient(name: "Sugar", quantity: 55, unitOfMeasure: .grams, to: cookiesRecipe)
-    //    addIngredient(name: "Brown Sugar", quantity: 85, unitOfMeasure: .grams, to: cookiesRecipe)
-    //    addIngredient(name: "Salt", quantity: 3, unitOfMeasure: .grams, to: cookiesRecipe)
-    //    addIngredient(name: "Vanilla", quantity: 4.9, unitOfMeasure: .mililiters, to: cookiesRecipe)
-    //    addIngredient(name: "Eggs", quantity: 1, unitOfMeasure: .units, to: cookiesRecipe)
-    //    addIngredient(name: "Flour", quantity: 145, unitOfMeasure: .grams, to: cookiesRecipe)
-    //    addIngredient(name: "Baking Soda", quantity: 2.4, unitOfMeasure: .grams, to: cookiesRecipe)
-    //    addIngredient(name: "Chocolate Chunks", quantity: 170, unitOfMeasure: .grams, to: cookiesRecipe)
-    //    addIngredient(name: "Box", quantity: 1, unitOfMeasure: .units, to: cookiesRecipe)
-    //    addIngredient(name: "Sticker", quantity: 1, unitOfMeasure: .units, to: cookiesRecipe)
-    
+//    let brownieRecipe = createRecipe(name: "Brownie")
+//    addIngredient(name: "Butter", quantity: 200, unitOfMeasure: .grams, to: brownieRecipe)
+//    addIngredient(name: "Sugar", quantity: 170, unitOfMeasure: .grams, to: brownieRecipe)
+//    addIngredient(name: "Eggs", quantity: 4, unitOfMeasure: .units, to: brownieRecipe)
+//    addIngredient(name: "Honey", quantity: 21, unitOfMeasure: .grams, to: brownieRecipe)
+//    addIngredient(name: "Flour", quantity: 170, unitOfMeasure: .grams, to: brownieRecipe)
+//    addIngredient(name: "Cacao", quantity: 70, unitOfMeasure: .grams, to: brownieRecipe)
+//    addIngredient(name: "Baking Powder", quantity: 4, unitOfMeasure: .grams, to: brownieRecipe)
+//    addIngredient(name: "Salt", quantity: 3, unitOfMeasure: .grams, to: brownieRecipe)
+//    addIngredient(name: "Nuts", quantity: 37.6, unitOfMeasure: .grams, to: brownieRecipe)
+//    addIngredient(name: "Sirope", quantity: 150, unitOfMeasure: .grams, to: brownieRecipe)
+//    addIngredient(name: "Box", quantity: 1, unitOfMeasure: .units, to: brownieRecipe)
+//    addIngredient(name: "Sticker", quantity: 1, unitOfMeasure: .units, to: brownieRecipe)
+//
+//    let cookiesRecipe = createRecipe(name: "Cookies")
+//    addIngredient(name: "Butter", quantity: 100, unitOfMeasure: .grams, to: cookiesRecipe)
+//    addIngredient(name: "Sugar", quantity: 55, unitOfMeasure: .grams, to: cookiesRecipe)
+//    addIngredient(name: "Brown Sugar", quantity: 85, unitOfMeasure: .grams, to: cookiesRecipe)
+//    addIngredient(name: "Salt", quantity: 3, unitOfMeasure: .grams, to: cookiesRecipe)
+//    addIngredient(name: "Vanilla", quantity: 4.9, unitOfMeasure: .mililiters, to: cookiesRecipe)
+//    addIngredient(name: "Eggs", quantity: 1, unitOfMeasure: .units, to: cookiesRecipe)
+//    addIngredient(name: "Flour", quantity: 145, unitOfMeasure: .grams, to: cookiesRecipe)
+//    addIngredient(name: "Baking Soda", quantity: 2.4, unitOfMeasure: .grams, to: cookiesRecipe)
+//    addIngredient(name: "Chocolate Chunks", quantity: 170, unitOfMeasure: .grams, to: cookiesRecipe)
+//    addIngredient(name: "Box", quantity: 1, unitOfMeasure: .units, to: cookiesRecipe)
+//    addIngredient(name: "Sticker", quantity: 1, unitOfMeasure: .units, to: cookiesRecipe)
+
 //    do {
 //        request.predicate = NSPredicate(format: "name == %@", "Butter")
 //        slots = try context.fetch(request)

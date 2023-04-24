@@ -13,22 +13,25 @@ struct RecipeDetails: View {
     @State private var showNewIngredientView = false
     
     var body: some View {
-        List {
-            if let ingredients = recipe.ingredients?.allObjects as? [Ingredient] {
-                ForEach(ingredients, id: \.self) {
-                    IngredientInfo(ingredient: $0)
+        ScrollView {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
+                if let ingredients = recipe.ingredients?.allObjects as? [Ingredient] {
+                    ForEach(ingredients, id: \.self) {
+                        IngredientInfo(ingredient: $0)
+                    }
                 }
             }
-        }
-        .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Button {
-                    showNewIngredientView = true
-                } label: {
-                    Label("New Ingredient", systemImage: "plus")
-                }
-                .sheet(isPresented: $showNewIngredientView) {
-                    NewIngredient(recipe: recipe)
+            .padding(.horizontal)
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        showNewIngredientView = true
+                    } label: {
+                        Label("New Ingredient", systemImage: "plus")
+                    }
+                    .sheet(isPresented: $showNewIngredientView) {
+                        NewIngredient(recipe: recipe)
+                    }
                 }
             }
         }
@@ -44,14 +47,32 @@ struct IngredientInfo: View {
             VStack(alignment: .leading) {
                 Text(ingredient.name ?? "no name")
                     .bold()
-                HStack {
+                    .lineLimit(1)
+                
+                HStack(spacing: 2) {
                     Text(ingredient.quantity, format: .number.decimalSeparator(strategy: .automatic))
                     Text(ingredient.unitOfMeasure.rawValue)
                 }
+                
+                Text(ingredient.cost, format: .currency(code: "USD"))
+                
+                if !ingredient.thereIsEnough {
+                    HStack(spacing: 2) {
+                        Text("you need")
+                        Text(ingredient.neededQuantity, format: .number.decimalSeparator(strategy: .automatic))
+                        Text("more")
+                    }
+                }
             }
             Spacer()
-            Text(ingredient.cost, format: .currency(code: "USD"))
         }
+        .padding()
+        .background {
+            ingredient.thereIsEnough
+            ? Color.mint.opacity(0.2)
+            : Color.red.opacity(0.2)
+        }
+        .cornerRadius(10)
     }
 }
 

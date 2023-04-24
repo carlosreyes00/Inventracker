@@ -41,9 +41,9 @@ extension Slot {
 }
 
 extension Slot {
-    var availableQuantity: Double {
+    var quantity: Double {
         get {
-            let sum = self.purchases?.reduce(0) { $0 + ($1 as! Purchase).quantity }
+            let sum = self.purchases?.reduce(0) { $0 + ($1 as! Purchase).availableQuantity }
             return sum!
         }
     }

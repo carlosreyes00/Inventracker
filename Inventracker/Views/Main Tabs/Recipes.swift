@@ -29,6 +29,12 @@ struct Recipes: View {
                     }
                 }
                 .onDelete(perform: deleteItems)
+                .onAppear {
+                    print("appearing...")
+                    recipes.forEach { recipe in
+                        viewContext.refresh(recipe, mergeChanges: true)
+                    }
+                }
             }
             .listStyle(.inset)
             .navigationTitle("Recipes")
@@ -69,8 +75,6 @@ struct RecipeInfo: View {
         }
     }
 }
-
-
 
 struct Recipes_Previews: PreviewProvider {
     static var previews: some View {
