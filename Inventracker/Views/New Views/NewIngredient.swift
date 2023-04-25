@@ -39,10 +39,6 @@ struct NewIngredient: View {
                 ToolbarItem {
                     Button {
                         addIngredient(name: name, quantity: Double(quantity)!, unitOfMeasure: unitOfMeasure, to: recipe, in: viewContext)
-                        
-                        name.removeAll()
-                        quantity.removeAll()
-                        
                         dismiss()
                     } label: {
                         Label("Add to \(recipe.name!)", systemImage: "plus.circle")

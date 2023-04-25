@@ -30,7 +30,6 @@ struct Recipes: View {
                 }
                 .onDelete(perform: deleteItems)
                 .onAppear {
-                    print("appearing...")
                     recipes.forEach { recipe in
                         viewContext.refresh(recipe, mergeChanges: true)
                     }
@@ -72,6 +71,8 @@ struct RecipeInfo: View {
                 .bold()
             Text("\(recipe.ingredients?.count ?? -1) ingredients")
             Text(recipe.cost, format: .currency(code: "USD"))
+            Text(recipe.isAvailable ? "Is Available" : "Isn't Available")
+                .foregroundColor(recipe.isAvailable ? .green : .red)
         }
     }
 }

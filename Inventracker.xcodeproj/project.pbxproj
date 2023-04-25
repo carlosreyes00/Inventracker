@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1205272229E4933100773336 /* Sales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1205272129E4933100773336 /* Sales.swift */; };
+		120D27AE29F71C7200F4B8E6 /* NewSale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120D27AD29F71C7200F4B8E6 /* NewSale.swift */; };
 		12132F8629ED80160065A51D /* Recipe+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12132F8429ED80160065A51D /* Recipe+CoreDataClass.swift */; };
 		12132F8729ED80160065A51D /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12132F8529ED80160065A51D /* Recipe+CoreDataProperties.swift */; };
 		12355C8129DF126000E9E1AE /* Purchases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12355C8029DF126000E9E1AE /* Purchases.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		1205272129E4933100773336 /* Sales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sales.swift; sourceTree = "<group>"; };
+		120D27AD29F71C7200F4B8E6 /* NewSale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSale.swift; sourceTree = "<group>"; };
 		12132F8429ED80160065A51D /* Recipe+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataClass.swift"; sourceTree = "<group>"; };
 		12132F8529ED80160065A51D /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		12355C8029DF126000E9E1AE /* Purchases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchases.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				12D7EEAB29DB5BF400D28196 /* NewIngredient.swift */,
 				12F1998F29DCAA28000C57B4 /* NewRecipe.swift */,
 				12586E8A29E4D4A300E450B6 /* NewPurchase.swift */,
+				120D27AD29F71C7200F4B8E6 /* NewSale.swift */,
 			);
 			path = "New Views";
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				12C9CB2F29E5E35100F37F47 /* Managment.swift in Sources */,
 				12D7EEAC29DB5BF400D28196 /* NewIngredient.swift in Sources */,
 				1247471829E70CB400A7623D /* Slot+CoreDataProperties.swift in Sources */,
+				120D27AE29F71C7200F4B8E6 /* NewSale.swift in Sources */,
 				12F1999229DCAF6F000C57B4 /* RecipeDetails.swift in Sources */,
 				12D2A27A29E70A2C007CE4AA /* Ingredient+CoreDataProperties.swift in Sources */,
 				12355C8329DF12B200E9E1AE /* Recipes.swift in Sources */,

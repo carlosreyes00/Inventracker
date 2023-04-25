@@ -23,12 +23,15 @@ struct Purchases: View {
     
     @State private var showNewPurchaseView = false
     
+    @State private var filterSelected = "All"
+    
     var body: some View {
         NavigationStack {
             List {
                 ForEach(purchases, id: \.self) { purchase in
                     PurchaseInfo(purchase: purchase)
                 }
+                .onDelete(perform: deleteItems)
             }
             .navigationTitle("Purchases")
             .toolbar {
@@ -48,23 +51,33 @@ struct Purchases: View {
                     Menu {
                         Button {
                             purchases.nsPredicate = nil
+                            filterSelected = "All"
                         } label: {
                             Text("All")
                         }
                         ForEach(slots, id: \.self) { slot in
                             Button {
                                 purchases.nsPredicate = NSPredicate(format: "slot.name = %@", slot.name!)
+                                filterSelected = slot.name!
                             } label: {
                                 Text("\(slot.name!) (\(slot.purchases?.count ?? -1))")
                             }
                         }
                     } label: {
-                        Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
+                        Text(filterSelected)
+//                        Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
                     }
                 }
             }
         }
         .badge(purchases.count)
+    }
+    
+    private func deleteItems(offsets: IndexSet) {
+        withAnimation {
+            offsets.map { purchases[$0] }.forEach(viewContext.delete)
+        }
+        saveContext(context: viewContext)
     }
 }
 

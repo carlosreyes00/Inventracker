@@ -23,7 +23,7 @@ extension Recipe {
 }
 
 extension Recipe {
-    var cost : Double {
+    var cost: Double {
         get {
             guard let sum = self.ingredients?.reduce(0, { partialResult, ingredient in
                 partialResult + (ingredient as! Ingredient).cost
@@ -32,6 +32,22 @@ extension Recipe {
             }
             
             return sum
+        }
+    }
+    
+    var isAvailable: Bool {
+        get {
+            guard let ingredients = self.ingredients else {
+                return false
+            }
+            
+            let noEnoughIngredient = ingredients.first(where: { !($0 as! Ingredient).thereIsEnough })
+            
+            if noEnoughIngredient == nil {
+                return true
+            }
+            
+            return false
         }
     }
 }

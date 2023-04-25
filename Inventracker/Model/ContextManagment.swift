@@ -74,6 +74,21 @@ func addPurchase(date: Date, price: Double, quantity: Double, slot: Slot, in con
     saveContext(context: context)
 }
 
+func addSale(date: Date, recipe: Recipe, price: Double, in context: NSManagedObjectContext = PersistenceController.shared.container.viewContext) {
+    let sale = Sale(context: context)
+    sale.date = date
+    recipe.addToSales(sale)
+    sale.price = price
+    sale.cost = recipe.cost
+    sale.profit = price - sale.cost
+    
+    saveContext(context: context)
+}
+
+func makeSale(recipe: Recipe) {
+    
+}
+
 func deleteProductsToTesting(in context: NSManagedObjectContext = PersistenceController.shared.container.viewContext) {
     context.registeredObjects.forEach {
         context.delete($0)

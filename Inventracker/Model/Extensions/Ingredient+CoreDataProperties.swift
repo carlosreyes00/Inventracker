@@ -59,6 +59,11 @@ extension Ingredient {
             neededQuantity = self.quantity
             var value = 0.0
             
+            if purchases.count == 0 {
+                thereIsEnough = false
+                return value
+            }
+            
             purchases.forEach({ purchase in
                 let pricePerUnit = purchase.price / purchase.quantity
                 let toUse = Double.minimum(neededQuantity, purchase.availableQuantity)

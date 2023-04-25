@@ -54,14 +54,14 @@ struct IngredientInfo: View {
                     Text(ingredient.unitOfMeasure.rawValue)
                 }
                 
-                Text(ingredient.cost, format: .currency(code: "USD"))
-                
                 if !ingredient.thereIsEnough {
                     HStack(spacing: 2) {
-                        Text("you need")
+                        Text("need")
                         Text(ingredient.neededQuantity, format: .number.decimalSeparator(strategy: .automatic))
                         Text("more")
                     }
+                } else {
+                    Text(ingredient.cost, format: .currency(code: "USD"))                    
                 }
             }
             Spacer()

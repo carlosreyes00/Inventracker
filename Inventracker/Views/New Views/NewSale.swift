@@ -1,59 +1,60 @@
 //
-//  NewPurchase.swift
+//  NewSale.swift
 //  Inventracker
 //
-//  Created by Carlos Rafael Reyes Magadán on 4/10/23.
+//  Created by Carlos Rafael Reyes Magadán on 4/24/23.
 //
 
 import SwiftUI
 
-struct NewPurchase: View {
+struct NewSale: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     
     @State private var date = Date()
+    
     @State private var price = ""
-    @State private var quantity = ""
-    
     @State private var wrongPriceFormat = true
-    @State private var wrongQuantityFormat = true
     
-    @State var slots: [Slot]
+    @State var recipes: [Recipe]
     
-    @State var slot: Slot
+    @State var recipe: Recipe
     
     var body: some View {
         NavigationStack {
             Form {
-                Picker("Ingredient", selection: $slot) {
-                    ForEach(slots, id: \.self) { slot in
-                        Text("\(slot.name!)").tag(slot.name!)
+                Picker("Recipe", selection: $recipe) {
+                    ForEach(recipes, id: \.self) { recipe in
+                        Text("\(recipe.name!)").tag(recipe.name!)
                     }
                 }
                 
                 DatePicker("Date", selection: $date)
                 
                 DecimalTextField(name: "Price", decimal: $price, wrongDecimalFormat: $wrongPriceFormat)
-                DecimalTextField(name: "Quantity", decimal: $quantity, wrongDecimalFormat: $wrongQuantityFormat)
             }
             .toolbar {
                 ToolbarItem {
                     Button {
-                        addPurchase(date: date, price: Double(price)!, quantity: Double(quantity)!, slot: slot, in: viewContext)
+                        addSale(date: date, recipe: recipe, price: Double(price)!)
+                        
+                        date = Date()
+                        price.removeAll()
+                        
                         dismiss()
                     } label: {
                         Label("Add", systemImage: "plus.circle")
                             .labelStyle(.titleOnly)
                     }
-                    .disabled(wrongPriceFormat || wrongQuantityFormat)
+                    .disabled(wrongPriceFormat)
                 }
             }
         }
     }
 }
 
-struct NewPurchase_Previews: PreviewProvider {
+struct NewSale_Previews: PreviewProvider {
     static var previews: some View {
-        NewPurchase(slots: [.init()], slot: .init())
+        NewSale(recipes: [.init()], recipe: .init())
     }
 }
