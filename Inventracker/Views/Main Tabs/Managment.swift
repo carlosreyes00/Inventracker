@@ -73,24 +73,11 @@ struct Managment: View {
             
             Section {
                 ForEach(slots, id: \.self) { slot in
-                    HStack {
-                        Text(slot.name ?? "no name")
-                        Spacer()
-                        HStack {
-                            Text(slot.quantity, format: .number.decimalSeparator(strategy: .automatic))
-                            Text(slot.unitOfMeasure.rawValue)
-                        }
-                    }
+                    SlotInfo(slot: slot)
                 }
             } header: {
                 Text("Slots")
             }
         }
-    }
-}
-
-struct Managment_Previews: PreviewProvider {
-    static var previews: some View {
-        Managment()
     }
 }

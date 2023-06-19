@@ -51,9 +51,3 @@ struct NewPurchase: View {
         }
     }
 }
-
-struct NewPurchase_Previews: PreviewProvider {
-    static var previews: some View {
-        NewPurchase(slots: [.init()], slot: .init())
-    }
-}

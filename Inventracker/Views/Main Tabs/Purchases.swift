@@ -44,7 +44,7 @@ struct Purchases: View {
                     .sheet(isPresented: $showNewPurchaseView) {
                         NewPurchase(slots: Array(slots), slot: slots.first!)
                     }
-                    .disabled(slots.count == 0)
+                    .disabled(slots.isEmpty)
                 }
                 
                 ToolbarItem (placement: .automatic) {
@@ -57,16 +57,16 @@ struct Purchases: View {
                         }
                         ForEach(slots, id: \.self) { slot in
                             Button {
-                                purchases.nsPredicate = NSPredicate(format: "slot.name = %@", slot.name!)
+                                purchases.nsPredicate = NSPredicate(format: "slot.name == %@", slot.name!)
                                 filterSelected = slot.name!
                             } label: {
                                 Text("\(slot.name!) (\(slot.purchases?.count ?? -1))")
                             }
                         }
                     } label: {
-                        Text(filterSelected)
-//                        Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
+                        Text(purchases.isEmpty ? "All" : filterSelected)
                     }
+                    .disabled(purchases.isEmpty)
                 }
             }
         }
@@ -74,54 +74,26 @@ struct Purchases: View {
     }
     
     private func deleteItems(offsets: IndexSet) {
+        
+        var ingredients = [Ingredient]()
+        
         withAnimation {
-            offsets.map { purchases[$0] }.forEach(viewContext.delete)
-        }
-        saveContext(context: viewContext)
-    }
-}
-
-struct PurchaseInfo: View {
-    let purchase: Purchase
-    
-    var body: some View {
-        HStack {
-            VStack (alignment: .leading) {
-                Text((purchase.slot?.name!)!)
-                    .bold()
-                Text(purchase.date!, style: .date)
-            }
-            Spacer()
-            VStack (alignment: .trailing) {
-                Text(purchase.price, format: .currency(code: "USD"))
-                HStack(spacing: 2) {
-                    Text(purchase.availableQuantity, format: .number.decimalSeparator(strategy: .automatic))
-                    Text("/")
-                    Text(purchase.quantity, format: .number.decimalSeparator(strategy: .automatic))
-                    Text(purchase.slot?.unitOfMeasure.rawValue ?? "-1")
+            offsets.map { purchases[$0] }.forEach {
+                $0.slot?.ingredients?.forEach { ingredient in
+                    ingredients.append(ingredient as! Ingredient)
                 }
-                .foregroundColor(purchase.isFullyUsed ? .red : .primary)
+                deleteObject(object: $0, context: viewContext)
             }
         }
-    }
-}
+            
+        ingredients.forEach {
+            viewContext.refresh($0, mergeChanges: true)
+        }
+        
+        ingredients.forEach { ingredient in
+            viewContext.refresh(ingredient.recipe!, mergeChanges: true)
+        }
 
-struct Purchases_Previews: PreviewProvider {
-    static var previews: some View {
-        let previewContext = PersistenceController.preview.container.viewContext
-        
-        let newSlot = Slot(context: previewContext)
-        newSlot.name = "Chocolate"
-        newSlot.unitOfMeasure = .grams
-        
-        let newPurchase = Purchase(context: previewContext)
-        newPurchase.date = Date()
-        newPurchase.price = 9.99
-        newPurchase.quantity = 40
-        newPurchase.availableQuantity = 25
-        newPurchase.isFullyUsed = false
-        newPurchase.slot = newSlot
-        
-        return PurchaseInfo(purchase: newPurchase)
+        saveContext(context: viewContext)
     }
 }

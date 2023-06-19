@@ -51,17 +51,6 @@ struct NewIngredient: View {
     }
 }
 
-
-
-struct NewIngredient_Previews: PreviewProvider {
-    static var previews: some View {
-        let newRecipe = Recipe(context: PersistenceController.preview.container.viewContext)
-        newRecipe.name = "Preview Recipe"
-        
-        return NewIngredient(recipe: newRecipe)
-    }
-}
-
 struct DecimalTextField: View {
     var name: String
     @Binding var decimal: String

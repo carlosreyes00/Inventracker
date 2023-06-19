@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E261" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F66" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Ingredient" representedClassName="Ingredient" syncable="YES">
         <attribute name="cost" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -9,6 +9,7 @@
         <attribute name="thereIsEnough" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="unitOfMeasureValue" optional="YES" attributeType="String"/>
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredients" inverseEntity="Recipe"/>
+        <relationship name="slot" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Slot" inverseName="ingredients" inverseEntity="Slot"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="name"/>
@@ -26,9 +27,9 @@
         <relationship name="slot" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Slot" inverseName="purchases" inverseEntity="Slot"/>
     </entity>
     <entity name="Recipe" representedClassName="Recipe" syncable="YES">
+        <attribute name="canBeSold" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="cost" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="isAvailable" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Ingredient" inverseName="recipe" inverseEntity="Ingredient"/>
         <relationship name="sales" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sale" inverseName="recipe" inverseEntity="Sale"/>
@@ -51,6 +52,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="quantity" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="unitOfMeasureValue" optional="YES" attributeType="String"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="slot" inverseEntity="Ingredient"/>
         <relationship name="purchases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Purchase" inverseName="slot" inverseEntity="Purchase"/>
         <uniquenessConstraints>
             <uniquenessConstraint>

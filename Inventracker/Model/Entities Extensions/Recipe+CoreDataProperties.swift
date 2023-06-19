@@ -23,11 +23,11 @@ extension Recipe {
 }
 
 extension Recipe {
-    var cost: Double {
+    public var cost: Double {
         get {
-            guard let sum = self.ingredients?.reduce(0, { partialResult, ingredient in
-                partialResult + (ingredient as! Ingredient).cost
-            }) else {
+            print("Price of \(self.name ?? "N/A")")
+            guard let sum = self.ingredients?.reduce(0, { $0 + ($1 as! Ingredient).cost })
+            else {
                 return -1
             }
             
@@ -35,15 +35,17 @@ extension Recipe {
         }
     }
     
-    var isAvailable: Bool {
+    public var canBeSold: Bool {
         get {
-            guard let ingredients = self.ingredients else {
+            let ingredients = self.ingredients
+            
+            if ingredients == nil || ingredients?.count == 0 {
                 return false
             }
             
-            let noEnoughIngredient = ingredients.first(where: { !($0 as! Ingredient).thereIsEnough })
+            let firstNoEnoughIngredient = ingredients!.first(where: { !($0 as! Ingredient).thereIsEnough })
             
-            if noEnoughIngredient == nil {
+            if firstNoEnoughIngredient == nil {
                 return true
             }
             

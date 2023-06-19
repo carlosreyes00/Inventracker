@@ -33,10 +33,3 @@ struct NewRecipe: View {
         }
     }
 }
-
-
-struct NewRecipe_Previews: PreviewProvider {
-    static var previews: some View {
-        NewRecipe()
-    }
-}

@@ -25,15 +25,11 @@ struct Recipes: View {
                         RecipeDetails(recipe: recipe)
                             .navigationTitle(recipe.name!)
                     } label: {
+//                        Text("\(recipe.name!) (\(recipe.ingredients!.count))")
                         RecipeInfo(recipe: recipe)
                     }
                 }
                 .onDelete(perform: deleteItems)
-                .onAppear {
-                    recipes.forEach { recipe in
-                        viewContext.refresh(recipe, mergeChanges: true)
-                    }
-                }
             }
             .listStyle(.inset)
             .navigationTitle("Recipes")
@@ -58,28 +54,5 @@ struct Recipes: View {
             offsets.map { recipes[$0] }.forEach(viewContext.delete)
         }
         saveContext(context: viewContext)
-    }
-}
-
-struct RecipeInfo: View {
-    @ObservedObject var recipe: Recipe
-    
-    var body: some View {
-        VStack (alignment: .leading) {
-            Text(recipe.name ?? "no name")
-                .font(.title3)
-                .bold()
-            Text("\(recipe.ingredients?.count ?? -1) ingredients")
-            Text(recipe.cost, format: .currency(code: "USD"))
-            Text(recipe.isAvailable ? "Is Available" : "Isn't Available")
-                .foregroundColor(recipe.isAvailable ? .green : .red)
-        }
-    }
-}
-
-struct Recipes_Previews: PreviewProvider {
-    static var previews: some View {
-        Recipes()
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

@@ -2,7 +2,7 @@
 //  Slot+CoreDataClass.swift
 //  Inventracker
 //
-//  Created by Carlos Rafael Reyes Magadán on 4/12/23.
+//  Created by Carlos Rafael Reyes Magadán on 4/28/23.
 //
 //
 

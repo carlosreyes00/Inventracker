@@ -16,7 +16,9 @@ struct NewSale: View {
     @State private var price = ""
     @State private var wrongPriceFormat = true
     
-    @State var recipes: [Recipe]
+    var recipes: FetchedResults<Recipe>
+    
+//    @State var recipes: [Recipe]
     
     @State var recipe: Recipe
     
@@ -50,11 +52,5 @@ struct NewSale: View {
                 }
             }
         }
-    }
-}
-
-struct NewSale_Previews: PreviewProvider {
-    static var previews: some View {
-        NewSale(recipes: [.init()], recipe: .init())
     }
 }
