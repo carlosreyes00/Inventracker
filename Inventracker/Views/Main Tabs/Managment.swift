@@ -38,11 +38,11 @@ struct Managment: View {
     var body: some View {
         List {
             Section {
-                Text("ingredients: \(ingredients.count)")
-                Text("purchases: \(purchases.count)")
-                Text("recipes: \(recipes.count)")
-                Text("sales: \(sales.count)")
-                Text("slots: \(slots.count)")
+                Text("Ingredients: \(ingredients.count)")
+                Text("Purchases: \(purchases.count)")
+                Text("Recipes: \(recipes.count)")
+                Text("Sales: \(sales.count)")
+                Text("Slots: \(slots.count)")
             } header: {
                 Text("Entities")
             }
