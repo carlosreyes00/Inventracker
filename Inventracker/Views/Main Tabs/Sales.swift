@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import CoreData
+import Foundation
 
 struct Sales: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -28,6 +30,9 @@ struct Sales: View {
                 ForEach(sales, id: \.self) { sale in
                     SaleInfo(sale: sale)
                 }
+                ForEach(recipes, id: \.self) { recipe in
+                    Text("\(recipe.name!) -> \(String(recipe.canBeSold))")
+                }
             }
             .navigationTitle("Sales")
             .toolbar {
@@ -38,66 +43,13 @@ struct Sales: View {
                         Image(systemName: "plus")
                     }
                     .sheet(isPresented: $showingNewSale) {
-                        NewSale(recipes: Array(recipes.filter({$0.isAvailable})), recipe: recipes.filter({$0.isAvailable}).first!)
+                        //                        NewSale(recipes: Array(recipes.filter({$0.isAvailable})), recipe: recipes.filter({$0.isAvailable}).first!)
+                        NewSale(recipes: recipes, recipe: recipes.first!)
                     }
-                    .disabled(recipes.filter({$0.isAvailable}).count == 0)
-                } 
-            }
-        }
-        .badge(sales.count)
-    }
-}
-
-struct SaleInfo: View {
-    let sale: Sale
-    
-    var body: some View {
-        VStack (alignment: .center) {
-            HStack (alignment: .center) {
-                Text(sale.recipe?.name ?? "N/A")
-                    .bold()
-                Spacer()
-                Text(sale.date!, style: .date)
-                    .fontWeight(.light)
-            }
-            
-            HStack (alignment: .center) {
-                HStack(spacing: 3) {
-                    Text("Price: ")
-                    Text(sale.price, format: .currency(code: "USD"))
-                }
-                Spacer()
-                HStack(spacing: 3) {
-                    Text("Cost: ")
-                    Text(sale.cost, format: .currency(code: "USD"))
+                    .disabled(recipes.count == 0)
                 }
             }
-            
-            HStack(spacing: 3) {
-                Text("Profit: ")
-                Text(sale.profit, format: .currency(code: "USD"))
-            }
-            .bold()
-            .foregroundColor(.green)
         }
+        .badge(recipes.count)
     }
 }
-
-struct SalesInfo_Previews: PreviewProvider {
-    static var previews: some View {
-        let previewContext = PersistenceController.preview.container.viewContext
-        
-        let newRecipe = Recipe(context: previewContext)
-        newRecipe.name = "Brownie P"
-        
-        let newSale = Sale(context: previewContext)
-        newSale.date = Date()
-        newSale.recipe = newRecipe
-        newSale.cost = 8.50
-        newSale.price = 25
-        newSale.profit = newSale.price - newSale.cost
-        
-        return SaleInfo(sale: newSale)
-    }
-}
-

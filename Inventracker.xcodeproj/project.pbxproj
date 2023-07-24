@@ -22,6 +22,7 @@
 		12B5F5712A3940FD00277E83 /* SaleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B5F5702A3940FD00277E83 /* SaleInfo.swift */; };
 		12B5F5732A3941B900277E83 /* RecipeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B5F5722A3941B900277E83 /* RecipeInfo.swift */; };
 		12B92FDF2A3E0BB9001EC366 /* SlotInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B92FDE2A3E0BB9001EC366 /* SlotInfo.swift */; };
+		12BC13FD2A4125D3005E8542 /* RecipeDistributionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC13FC2A4125D3005E8542 /* RecipeDistributionChart.swift */; };
 		12BFEC292A393E5E00A69872 /* CMForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BFEC282A393E5E00A69872 /* CMForTests.swift */; };
 		12BFEC2B2A393FAD00A69872 /* IngredientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BFEC2A2A393FAD00A69872 /* IngredientInfo.swift */; };
 		12C9CB2F29E5E35100F37F47 /* Managment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9CB2E29E5E35100F37F47 /* Managment.swift */; };
@@ -55,6 +56,7 @@
 		12B5F5702A3940FD00277E83 /* SaleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleInfo.swift; sourceTree = "<group>"; };
 		12B5F5722A3941B900277E83 /* RecipeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInfo.swift; sourceTree = "<group>"; };
 		12B92FDE2A3E0BB9001EC366 /* SlotInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotInfo.swift; sourceTree = "<group>"; };
+		12BC13FC2A4125D3005E8542 /* RecipeDistributionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDistributionChart.swift; sourceTree = "<group>"; };
 		12BFEC282A393E5E00A69872 /* CMForTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMForTests.swift; sourceTree = "<group>"; };
 		12BFEC2A2A393FAD00A69872 /* IngredientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientInfo.swift; sourceTree = "<group>"; };
 		12C9CB2E29E5E35100F37F47 /* Managment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managment.swift; sourceTree = "<group>"; };
@@ -151,6 +153,14 @@
 			path = "Info Views";
 			sourceTree = "<group>";
 		};
+		12BC13FE2A412D9E005E8542 /* Charts Views */ = {
+			isa = PBXGroup;
+			children = (
+				12BC13FC2A4125D3005E8542 /* RecipeDistributionChart.swift */,
+			);
+			path = "Charts Views";
+			sourceTree = "<group>";
+		};
 		12D7EE8C29DB57BA00D28196 = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +202,7 @@
 		12D7EEAD29DB5D3200D28196 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				12BC13FE2A412D9E005E8542 /* Charts Views */,
 				12586E8929E4D14800E450B6 /* New Views */,
 				12B92FDD2A3E0B96001EC366 /* Info Views */,
 				12586E8829E4D13600E450B6 /* Details Views */,
@@ -280,6 +291,7 @@
 				12BFEC2B2A393FAD00A69872 /* IngredientInfo.swift in Sources */,
 				12A720C729FBFBC400CD6AF1 /* Slot+CoreDataClass.swift in Sources */,
 				1205272229E4933100773336 /* Sales.swift in Sources */,
+				12BC13FD2A4125D3005E8542 /* RecipeDistributionChart.swift in Sources */,
 				12D2A27229E7052B007CE4AA /* Enums.swift in Sources */,
 				12D7EEA529DB57BB00D28196 /* Inventracker.xcdatamodeld in Sources */,
 				12586E8B29E4D4A300E450B6 /* NewPurchase.swift in Sources */,
@@ -353,7 +365,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -407,7 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
