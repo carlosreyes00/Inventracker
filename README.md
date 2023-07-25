@@ -10,8 +10,8 @@ Inventracker is an user-friendly iOS app designed to help you effortlessly organ
 + Automatically updates ingredient quantities as you use them in recipes or when you purchase new items.
 + When you make a sale, the app calculates the profit and builds a graph showing past sales.
 
-## Instalation
-The app is just an Xcode project, you only need to clone it and work on it.
+## Installation
+The app is an Xcode project, and you only need to clone it and work on it.
 
 ## Technical Details
-The app is built in Swift, using Apple's SwiftUI and Core Data frameworks. The app is currently targeting iOS 16.0
+The app is built in Swift, using Apple's SwiftUI and Core Data frameworks. The app is currently targeting iOS 16.0.
