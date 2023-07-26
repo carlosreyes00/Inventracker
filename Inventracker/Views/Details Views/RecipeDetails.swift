@@ -54,3 +54,33 @@ struct RecipeDetails: View {
         }
     }
 }
+
+struct RecipeDetails_Previews: PreviewProvider {
+    static var previews: some View {
+        let previewContext = PersistenceController.preview.container.viewContext
+        deleteProductsToTesting(in: previewContext)
+        
+        let brownieRecipe = createRecipe(name: "Brownie", in: previewContext)
+        
+        addIngredient(name: "Eggs", quantity: 66, unitOfMeasure: .units, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Sugar", quantity: 100, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Chocolate", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Honey", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Milk", quantity: 66, unitOfMeasure: .units, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Chips", quantity: 100, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Vanilla", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Ing 00", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Ing 01", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Ing 02", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Ing 03", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Ing 04", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Ing 05", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Ing 06", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        
+        return NavigationStack {
+            RecipeDetails(recipe: brownieRecipe)
+                .navigationTitle(brownieRecipe.name!)
+                .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+}

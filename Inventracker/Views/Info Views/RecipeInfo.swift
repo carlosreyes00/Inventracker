@@ -22,10 +22,13 @@ struct RecipeInfo: View {
             
             Spacer()
             
-            VStack(alignment: .trailing) {
-                Text(recipe.canBeSold ? "Available" : "Not available")
-                    .foregroundColor(recipe.canBeSold ? .green : .red)
+            HStack {
                 Text(recipe.cost, format: .currency(code: "USD"))
+                Image(systemName: recipe.canBeSold
+                      ? "checkmark.seal.fill"
+                      : "xmark.seal.fill")
+                .foregroundColor(recipe.canBeSold ? .green : .red)
+                .bold()
             }
         }
     }
@@ -34,8 +37,8 @@ struct RecipeInfo: View {
 struct RecipeInfo_Previews: PreviewProvider {
     static var previews: some View {
         let recipe = Recipe(context: PersistenceController.preview.container.viewContext)
-        recipe.name = "hello"
+        recipe.name = "Recipe"
         
-        return RecipeInfo(recipe: recipe)
+        return RecipeInfo(recipe: recipe).padding()
     }
 }

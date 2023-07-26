@@ -24,8 +24,8 @@ struct Recipes: View {
                     NavigationLink {
                         RecipeDetails(recipe: recipe)
                             .navigationTitle(recipe.name!)
+                            .navigationBarTitleDisplayMode(.inline)
                     } label: {
-//                        Text("\(recipe.name!) (\(recipe.ingredients!.count))")
                         RecipeInfo(recipe: recipe)
                     }
                 }
