@@ -34,7 +34,7 @@ struct Recipes: View {
             .listStyle(.inset)
             .navigationTitle("Recipes")
             .toolbar {
-                ToolbarItem {
+                ToolbarItem (placement: .primaryAction) {
                     Button {
                         showingNewRecipe = true
                     } label: {
@@ -43,6 +43,9 @@ struct Recipes: View {
                     .sheet(isPresented: $showingNewRecipe) {
                         NewRecipe()
                     }
+                }
+                ToolbarItem {
+                    EditButton()
                 }
             }
         }

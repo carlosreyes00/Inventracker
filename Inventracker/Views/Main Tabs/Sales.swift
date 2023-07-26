@@ -44,9 +44,9 @@ struct Sales: View {
                     }
                     .sheet(isPresented: $showingNewSale) {
                         //                        NewSale(recipes: Array(recipes.filter({$0.isAvailable})), recipe: recipes.filter({$0.isAvailable}).first!)
-                        NewSale(recipes: recipes, recipe: recipes.first!)
+                        NewSale(recipes: recipes, recipe: recipes.first(where: { $0.canBeSold })!)
                     }
-                    .disabled(recipes.count == 0)
+                    .disabled(recipes.first(where: { $0.canBeSold }) == nil)
                 }
             }
         }

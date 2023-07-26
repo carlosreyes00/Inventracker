@@ -26,7 +26,7 @@ struct NewSale: View {
         NavigationStack {
             Form {
                 Picker("Recipe", selection: $recipe) {
-                    ForEach(recipes, id: \.self) { recipe in
+                    ForEach(recipes.filter { $0.canBeSold }, id: \.self) { recipe in
                         Text("\(recipe.name!)").tag(recipe.name!)
                     }
                 }

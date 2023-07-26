@@ -91,4 +91,9 @@ func addSale(date: Date, recipe: Recipe, price: Double, in context: NSManagedObj
 }
 
 //TODO: function to perform a sale
-func makeSale(recipe: Recipe) { }
+func makeSale(recipe: Recipe) {
+    if !recipe.canBeSold {
+        print("\(recipe.name ?? "N/A") can't be sold")
+        return
+    }
+}
