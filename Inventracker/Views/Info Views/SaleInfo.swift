@@ -16,7 +16,7 @@ struct SaleInfo: View {
                 Text(sale.recipe?.name ?? "N/A")
                     .bold()
                 Spacer()
-                Text(sale.date!, style: .date)
+                Text(sale.date ?? Date(), style: .date)
                     .fontWeight(.light)
             }
             
