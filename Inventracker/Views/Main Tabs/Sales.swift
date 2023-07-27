@@ -31,7 +31,7 @@ struct Sales: View {
                     SaleInfo(sale: sale)
                 }
                 ForEach(recipes, id: \.self) { recipe in
-                    Text("\(recipe.name!) -> \(String(recipe.canBeSold))")
+                    Text("\(recipe.name ?? "N/A") -> \(String(recipe.canBeSold))")
                 }
             }
             .navigationTitle("Sales")
