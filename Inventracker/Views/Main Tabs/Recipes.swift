@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Recipes: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.undoManager) private var undoManager
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Recipe.name, ascending: true)],
@@ -34,6 +35,20 @@ struct Recipes: View {
             .listStyle(.inset)
             .navigationTitle("Recipes")
             .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    Button("Redo") {
+                        undoManager!.redo()
+                    }
+                    .disabled(undoManager == nil || !(undoManager!.canRedo))
+                    .foregroundColor(undoManager!.canRedo ? .accentColor : .red)
+                }
+                ToolbarItem(placement: .automatic) {
+                    Button("Undo") {
+                        undoManager!.undo()
+                    }
+                    .disabled(undoManager == nil || !(undoManager!.canUndo))
+                    .foregroundColor(undoManager!.canUndo ? .accentColor : .red)
+                }
                 ToolbarItem (placement: .primaryAction) {
                     Button {
                         showingNewRecipe = true
@@ -47,6 +62,9 @@ struct Recipes: View {
                 ToolbarItem {
                     EditButton()
                 }
+            }
+            .onAppear {
+                viewContext.undoManager = undoManager
             }
         }
         .badge(recipes.count)

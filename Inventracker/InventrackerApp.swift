@@ -9,17 +9,22 @@ import SwiftUI
 
 @main
 struct InventrackerApp: App {
-    let persistenceController = PersistenceController.shared
+    let viewContext = PersistenceController.shared.container.viewContext
     
-    @Environment(\.scenePhase) var scenePhase
+    @Environment(\.undoManager) private var undoManager
+    
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .onAppear {
+                    viewContext.undoManager = UndoManager()
+                }
+                .environment(\.managedObjectContext, viewContext)
         }
         .onChange(of: scenePhase) { _ in
-            saveContext(context: persistenceController.container.viewContext)
+            saveContext(context: viewContext)
         }
     }
 }
