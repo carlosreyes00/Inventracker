@@ -1,5 +1,5 @@
 //
-//  SaleInfo.swift
+//  SaleOverview.swift
 //  Inventracker
 //
 //  Created by Carlos Rafael Reyes Magadán on 6/13/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SaleInfo: View {
+struct SaleOverview: View {
     @ObservedObject var sale: Sale
     
     var body: some View {
@@ -36,7 +36,7 @@ struct SaleInfo: View {
     }
 }
 
-struct SaleInfo_Previews: PreviewProvider {
+struct SaleOverview_Previews: PreviewProvider {
     static var previews: some View {
         let sale = Sale(context: PersistenceController.preview.container.viewContext)
         sale.cost = 10
@@ -44,6 +44,6 @@ struct SaleInfo_Previews: PreviewProvider {
         sale.recipe = nil
         sale.date = Date()
         
-        return SaleInfo(sale: sale)
+        return SaleOverview(sale: sale)
     }
 }

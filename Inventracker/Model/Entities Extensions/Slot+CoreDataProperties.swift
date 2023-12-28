@@ -26,7 +26,6 @@ extension Slot {
 extension Slot {
     var quantity: Double {
         get {
-            print("🚩Calculating slot quantity of \(self.name ?? "N/A")")
             guard let sum = (self.purchases?.reduce(0) { $0 + ($1 as! Purchase).availableQuantity }) else {
                 return 0
             }

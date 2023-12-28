@@ -29,7 +29,7 @@ struct Purchases: View {
         NavigationStack {
             List {
                 ForEach(purchases, id: \.self) { purchase in
-                    PurchaseInfo(purchase: purchase)
+                    PurchaseOverview(purchase: purchase)
                 }
                 .onDelete(perform: deleteItems)
             }

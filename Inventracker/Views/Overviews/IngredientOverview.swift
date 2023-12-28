@@ -1,5 +1,5 @@
 //
-//  IngredientInfo.swift
+//  IngredientOverview.swift
 //  Inventracker
 //
 //  Created by Carlos Rafael Reyes Magadán on 6/13/23.

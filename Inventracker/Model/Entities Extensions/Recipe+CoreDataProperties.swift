@@ -25,7 +25,6 @@ extension Recipe {
 extension Recipe {
     public var cost: Double {
         get {
-            print("Price of \(self.name ?? "N/A")")
             guard let sum = self.ingredients?.reduce(0, { $0 + ($1 as! Ingredient).cost })
             else {
                 return -1

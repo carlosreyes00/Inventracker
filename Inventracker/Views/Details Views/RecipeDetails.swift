@@ -24,7 +24,7 @@ struct RecipeDetails: View {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
                     if let ingredients = recipe.ingredients?.allObjects as? [Ingredient] {
                         ForEach(ingredients, id: \.self) { ingredient in
-                            IngredientInfo(ingredient: ingredient)
+                            IngredientOverview(ingredient: ingredient)
                         }
                     }
                 }

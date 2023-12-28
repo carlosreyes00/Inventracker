@@ -27,7 +27,7 @@ struct Recipes: View {
                             .navigationTitle(recipe.name!)
                             .navigationBarTitleDisplayMode(.inline)
                     } label: {
-                        RecipeInfo(recipe: recipe)
+                        RecipeOverview(recipe: recipe)
                     }
                 }
                 .onDelete(perform: deleteItems)

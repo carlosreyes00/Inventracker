@@ -1,5 +1,5 @@
 //
-//  PurchaseInfo.swift
+//  PurchaseOverview.swift
 //  Inventracker
 //
 //  Created by Carlos Rafael Reyes Magadán on 6/19/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PurchaseInfo: View {
+struct PurchaseOverview: View {
     @ObservedObject var purchase: Purchase
     
     var body: some View {

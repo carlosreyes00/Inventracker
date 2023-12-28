@@ -1,5 +1,5 @@
 //
-//  RecipeInfo.swift
+//  RecipeOverview.swift
 //  Inventracker
 //
 //  Created by Carlos Rafael Reyes Magadán on 6/13/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RecipeInfo: View {
+struct RecipeOverview: View {
     @ObservedObject var recipe: Recipe
     
     var body: some View {
@@ -34,11 +34,11 @@ struct RecipeInfo: View {
     }
 }
 
-struct RecipeInfo_Previews: PreviewProvider {
+struct RecipeOverview_Previews: PreviewProvider {
     static var previews: some View {
         let recipe = Recipe(context: PersistenceController.preview.container.viewContext)
         recipe.name = "Recipe"
         
-        return RecipeInfo(recipe: recipe).padding()
+        return RecipeOverview(recipe: recipe).padding()
     }
 }

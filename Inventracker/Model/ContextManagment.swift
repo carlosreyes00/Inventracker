@@ -5,7 +5,6 @@
 //  Created by Carlos Rafael Reyes Magadán on 4/6/23.
 //
 
-import Foundation
 import CoreData
 import SwiftUI
 

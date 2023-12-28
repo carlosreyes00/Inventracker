@@ -1,5 +1,5 @@
 //
-//  SlotInfo.swift
+//  SlotOverview.swift
 //  Inventracker
 //
 //  Created by Carlos Rafael Reyes Magadán on 6/17/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SlotInfo: View {
+struct SlotOverview: View {
     @ObservedObject var slot: Slot
     
     var body: some View {

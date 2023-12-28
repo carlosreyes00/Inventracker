@@ -37,7 +37,6 @@ extension Ingredient {
     
     var cost: Double {
         get {
-            print("Price of ingredient \(self.name ?? "N/A")")
             let purchases = (slot?.purchases?.allObjects.filter({ !($0 as! Purchase).isFullyUsed }) as! [Purchase])
                 .sorted { $0.date! < $1.date! }
             

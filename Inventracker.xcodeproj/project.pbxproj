@@ -19,12 +19,12 @@
 		12A720C829FBFBC400CD6AF1 /* Slot+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A720C629FBFBC400CD6AF1 /* Slot+CoreDataProperties.swift */; };
 		12A720CB29FC065800CD6AF1 /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A720C929FC065800CD6AF1 /* Ingredient+CoreDataClass.swift */; };
 		12A720CC29FC065800CD6AF1 /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A720CA29FC065800CD6AF1 /* Ingredient+CoreDataProperties.swift */; };
-		12B5F5712A3940FD00277E83 /* SaleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B5F5702A3940FD00277E83 /* SaleInfo.swift */; };
-		12B5F5732A3941B900277E83 /* RecipeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B5F5722A3941B900277E83 /* RecipeInfo.swift */; };
-		12B92FDF2A3E0BB9001EC366 /* SlotInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B92FDE2A3E0BB9001EC366 /* SlotInfo.swift */; };
+		12B5F5712A3940FD00277E83 /* SaleOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B5F5702A3940FD00277E83 /* SaleOverview.swift */; };
+		12B5F5732A3941B900277E83 /* RecipeOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B5F5722A3941B900277E83 /* RecipeOverview.swift */; };
+		12B92FDF2A3E0BB9001EC366 /* SlotOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B92FDE2A3E0BB9001EC366 /* SlotOverview.swift */; };
 		12BC13FD2A4125D3005E8542 /* RecipeDistributionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC13FC2A4125D3005E8542 /* RecipeDistributionChart.swift */; };
 		12BFEC292A393E5E00A69872 /* CMForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BFEC282A393E5E00A69872 /* CMForTests.swift */; };
-		12BFEC2B2A393FAD00A69872 /* IngredientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BFEC2A2A393FAD00A69872 /* IngredientInfo.swift */; };
+		12BFEC2B2A393FAD00A69872 /* IngredientOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BFEC2A2A393FAD00A69872 /* IngredientOverview.swift */; };
 		12C9CB2F29E5E35100F37F47 /* Managment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9CB2E29E5E35100F37F47 /* Managment.swift */; };
 		12D2A27229E7052B007CE4AA /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2A27129E7052B007CE4AA /* Enums.swift */; };
 		12D7EE9929DB57BA00D28196 /* InventrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D7EE9829DB57BA00D28196 /* InventrackerApp.swift */; };
@@ -36,7 +36,7 @@
 		12D7EEAC29DB5BF400D28196 /* NewIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D7EEAB29DB5BF400D28196 /* NewIngredient.swift */; };
 		12F1999029DCAA28000C57B4 /* NewRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F1998F29DCAA28000C57B4 /* NewRecipe.swift */; };
 		12F1999229DCAF6F000C57B4 /* RecipeDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F1999129DCAF6F000C57B4 /* RecipeDetails.swift */; };
-		12FF9E8C2A408CBC007E065F /* PurchaseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FF9E8B2A408CBC007E065F /* PurchaseInfo.swift */; };
+		12FF9E8C2A408CBC007E065F /* PurchaseOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FF9E8B2A408CBC007E065F /* PurchaseOverview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,12 +53,12 @@
 		12A720C629FBFBC400CD6AF1 /* Slot+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Slot+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		12A720C929FC065800CD6AF1 /* Ingredient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataClass.swift"; sourceTree = "<group>"; };
 		12A720CA29FC065800CD6AF1 /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		12B5F5702A3940FD00277E83 /* SaleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleInfo.swift; sourceTree = "<group>"; };
-		12B5F5722A3941B900277E83 /* RecipeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInfo.swift; sourceTree = "<group>"; };
-		12B92FDE2A3E0BB9001EC366 /* SlotInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotInfo.swift; sourceTree = "<group>"; };
+		12B5F5702A3940FD00277E83 /* SaleOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleOverview.swift; sourceTree = "<group>"; };
+		12B5F5722A3941B900277E83 /* RecipeOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeOverview.swift; sourceTree = "<group>"; };
+		12B92FDE2A3E0BB9001EC366 /* SlotOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotOverview.swift; sourceTree = "<group>"; };
 		12BC13FC2A4125D3005E8542 /* RecipeDistributionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDistributionChart.swift; sourceTree = "<group>"; };
 		12BFEC282A393E5E00A69872 /* CMForTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMForTests.swift; sourceTree = "<group>"; };
-		12BFEC2A2A393FAD00A69872 /* IngredientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientInfo.swift; sourceTree = "<group>"; };
+		12BFEC2A2A393FAD00A69872 /* IngredientOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientOverview.swift; sourceTree = "<group>"; };
 		12C9CB2E29E5E35100F37F47 /* Managment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managment.swift; sourceTree = "<group>"; };
 		12D2A27129E7052B007CE4AA /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		12D7EE9529DB57BA00D28196 /* Inventracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,7 +71,7 @@
 		12D7EEAB29DB5BF400D28196 /* NewIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIngredient.swift; sourceTree = "<group>"; };
 		12F1998F29DCAA28000C57B4 /* NewRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipe.swift; sourceTree = "<group>"; };
 		12F1999129DCAF6F000C57B4 /* RecipeDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetails.swift; sourceTree = "<group>"; };
-		12FF9E8B2A408CBC007E065F /* PurchaseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseInfo.swift; sourceTree = "<group>"; };
+		12FF9E8B2A408CBC007E065F /* PurchaseOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseOverview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,16 +141,16 @@
 			path = "New Views";
 			sourceTree = "<group>";
 		};
-		12B92FDD2A3E0B96001EC366 /* Info Views */ = {
+		12B92FDD2A3E0B96001EC366 /* Overviews */ = {
 			isa = PBXGroup;
 			children = (
-				12B5F5722A3941B900277E83 /* RecipeInfo.swift */,
-				12BFEC2A2A393FAD00A69872 /* IngredientInfo.swift */,
-				12B92FDE2A3E0BB9001EC366 /* SlotInfo.swift */,
-				12FF9E8B2A408CBC007E065F /* PurchaseInfo.swift */,
-				12B5F5702A3940FD00277E83 /* SaleInfo.swift */,
+				12B5F5722A3941B900277E83 /* RecipeOverview.swift */,
+				12BFEC2A2A393FAD00A69872 /* IngredientOverview.swift */,
+				12B92FDE2A3E0BB9001EC366 /* SlotOverview.swift */,
+				12FF9E8B2A408CBC007E065F /* PurchaseOverview.swift */,
+				12B5F5702A3940FD00277E83 /* SaleOverview.swift */,
 			);
-			path = "Info Views";
+			path = Overviews;
 			sourceTree = "<group>";
 		};
 		12BC13FE2A412D9E005E8542 /* Charts Views */ = {
@@ -204,7 +204,7 @@
 			children = (
 				12BC13FE2A412D9E005E8542 /* Charts Views */,
 				12586E8929E4D14800E450B6 /* New Views */,
-				12B92FDD2A3E0B96001EC366 /* Info Views */,
+				12B92FDD2A3E0B96001EC366 /* Overviews */,
 				12586E8829E4D13600E450B6 /* Details Views */,
 				12586E8729E4D11800E450B6 /* Main Tabs */,
 			);
@@ -288,7 +288,7 @@
 				12D7EEA229DB57BB00D28196 /* Persistence.swift in Sources */,
 				12132F8729ED80160065A51D /* Recipe+CoreDataProperties.swift in Sources */,
 				12A720C829FBFBC400CD6AF1 /* Slot+CoreDataProperties.swift in Sources */,
-				12BFEC2B2A393FAD00A69872 /* IngredientInfo.swift in Sources */,
+				12BFEC2B2A393FAD00A69872 /* IngredientOverview.swift in Sources */,
 				12A720C729FBFBC400CD6AF1 /* Slot+CoreDataClass.swift in Sources */,
 				1205272229E4933100773336 /* Sales.swift in Sources */,
 				12BC13FD2A4125D3005E8542 /* RecipeDistributionChart.swift in Sources */,
@@ -300,15 +300,15 @@
 				12D7EEAC29DB5BF400D28196 /* NewIngredient.swift in Sources */,
 				120D27AE29F71C7200F4B8E6 /* NewSale.swift in Sources */,
 				12A720CC29FC065800CD6AF1 /* Ingredient+CoreDataProperties.swift in Sources */,
-				12B5F5712A3940FD00277E83 /* SaleInfo.swift in Sources */,
+				12B5F5712A3940FD00277E83 /* SaleOverview.swift in Sources */,
 				12F1999229DCAF6F000C57B4 /* RecipeDetails.swift in Sources */,
 				12355C8329DF12B200E9E1AE /* Recipes.swift in Sources */,
-				12B92FDF2A3E0BB9001EC366 /* SlotInfo.swift in Sources */,
-				12B5F5732A3941B900277E83 /* RecipeInfo.swift in Sources */,
+				12B92FDF2A3E0BB9001EC366 /* SlotOverview.swift in Sources */,
+				12B5F5732A3941B900277E83 /* RecipeOverview.swift in Sources */,
 				12355C8629DF14A600E9E1AE /* ContextManagment.swift in Sources */,
 				12A720CB29FC065800CD6AF1 /* Ingredient+CoreDataClass.swift in Sources */,
 				12D7EE9929DB57BA00D28196 /* InventrackerApp.swift in Sources */,
-				12FF9E8C2A408CBC007E065F /* PurchaseInfo.swift in Sources */,
+				12FF9E8C2A408CBC007E065F /* PurchaseOverview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

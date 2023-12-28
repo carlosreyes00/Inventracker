@@ -7,7 +7,6 @@
 
 import SwiftUI
 import CoreData
-import Foundation
 
 struct Sales: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -28,7 +27,7 @@ struct Sales: View {
         NavigationStack {
             List {
                 ForEach(sales, id: \.self) { sale in
-                    SaleInfo(sale: sale)
+                    SaleOverview(sale: sale)
                 }
                 ForEach(recipes, id: \.self) { recipe in
                     Text("\(recipe.name ?? "N/A") -> \(String(recipe.canBeSold))")

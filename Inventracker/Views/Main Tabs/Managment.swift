@@ -73,7 +73,7 @@ struct Managment: View {
             
             Section {
                 ForEach(slots, id: \.self) { slot in
-                    SlotInfo(slot: slot)
+                    SlotOverview(slot: slot)
                 }
             } header: {
                 Text("Slots")
