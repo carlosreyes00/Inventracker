@@ -41,7 +41,7 @@ struct NewIngredient: View {
                         addIngredient(name: name, quantity: Double(quantity)!, unitOfMeasure: unitOfMeasure, to: recipe, in: viewContext)
                         dismiss()
                     } label: {
-                        Label("Add to \(recipe.name!)", systemImage: "plus.circle")
+                        Label("Add to \(recipe.name ?? "N/A")", systemImage: "plus.circle")
                             .labelStyle(.titleOnly)
                     }
                     .disabled(name.isEmpty || wrongQuantityFormat)

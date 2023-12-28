@@ -15,10 +15,7 @@ struct SlotOverview: View {
             HStack {
                 Text(slot.name ?? "no name")
                 Spacer()
-                HStack {
-                    Text(slot.quantity, format: .number.decimalSeparator(strategy: .automatic))
-                    Text(slot.unitOfMeasure.rawValue)
-                }
+                Text(String(format: "%.2f \(slot.unitOfMeasure.rawValue)", slot.quantity))
             }
             Text("Ingredients: \(slot.ingredients?.count ?? -1)")
                 .font(.callout)

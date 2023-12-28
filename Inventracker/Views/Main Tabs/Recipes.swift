@@ -77,3 +77,7 @@ struct Recipes: View {
         saveContext(context: viewContext)
     }
 }
+
+#Preview {
+    return Recipes().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+}

@@ -25,8 +25,8 @@ struct RecipeOverview: View {
             HStack {
                 Text(recipe.cost, format: .currency(code: "USD"))
                 Image(systemName: recipe.canBeSold
-                      ? "checkmark.seal.fill"
-                      : "xmark.seal.fill")
+                      ? "checkmark.circle.fill"
+                      : "xmark.circle.fill")
                 .foregroundColor(recipe.canBeSold ? .green : .red)
                 .bold()
             }

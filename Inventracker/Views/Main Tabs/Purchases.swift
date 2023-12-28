@@ -66,7 +66,7 @@ struct Purchases: View {
                     } label: {
                         Text(purchases.isEmpty ? "All" : filterSelected)
                     }
-                    .disabled(purchases.isEmpty)
+//                    .disabled(purchases.isEmpty)
                 }
             }
         }
