@@ -21,7 +21,7 @@ struct RecipeDetails: View {
                     .padding()
             }
             ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
                     if let ingredients = recipe.ingredients?.allObjects as? [Ingredient] {
                         ForEach(ingredients, id: \.self) { ingredient in
                             IngredientOverview(ingredient: ingredient)
@@ -63,18 +63,18 @@ struct RecipeDetails_Previews: PreviewProvider {
         let brownieRecipe = createRecipe(name: "Brownie", in: previewContext)
         
         addIngredient(name: "Eggs", quantity: 66, unitOfMeasure: .units, to: brownieRecipe, in: previewContext)
-        addIngredient(name: "Sugar", quantity: 100, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Sugar", quantity: 0, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
         addIngredient(name: "Chocolate", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
         addIngredient(name: "Honey", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
         addIngredient(name: "Milk", quantity: 66, unitOfMeasure: .units, to: brownieRecipe, in: previewContext)
         addIngredient(name: "Chips", quantity: 100, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
         addIngredient(name: "Vanilla", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
-        addIngredient(name: "Ing 00", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Ing 00", quantity: 0, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
         addIngredient(name: "Ing 01", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
-        addIngredient(name: "Ing 02", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Ing 02", quantity: 0, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
         addIngredient(name: "Ing 03", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
         addIngredient(name: "Ing 04", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
-        addIngredient(name: "Ing 05", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
+        addIngredient(name: "Ing 05", quantity: 0, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
         addIngredient(name: "Ing 06", quantity: 50, unitOfMeasure: .grams, to: brownieRecipe, in: previewContext)
         
         return NavigationStack {

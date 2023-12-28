@@ -2,8 +2,34 @@
   "colors" : [
     {
       "color" : {
-        "platform" : "universal",
-        "reference" : "systemMintColor"
+        "platform" : "ios",
+        "reference" : "linkColor"
+      },
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "color" : {
+        "platform" : "ios",
+        "reference" : "linkColor"
+      },
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "color" : {
+        "platform" : "ios",
+        "reference" : "linkColor"
       },
       "idiom" : "universal"
     }

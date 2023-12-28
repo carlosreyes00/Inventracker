@@ -21,17 +21,13 @@ struct SaleOverview: View {
             }
             
             HStack (alignment: .center) {
-//                HStack(spacing: 3) {
-//                    Text("Cost: ")
-//                    Text(sale.cost, format: .currency(code: "USD"))
-//                }
                 Text("Cost: \(Text(sale.cost, format: .currency(code: "USD")))")
                 Spacer()
                 Text("Price: \(Text(sale.price, format: .currency(code: "USD")))")
             }
             Text("Profit: \(Text(sale.profit, format: .currency(code: "USD")))")
-            .bold()
-            .foregroundColor(.green)
+                .bold()
+                .foregroundColor(sale.profit < 0 ? .red : .green)
         }
     }
 }
@@ -42,8 +38,10 @@ struct SaleOverview_Previews: PreviewProvider {
         sale.cost = 10
         sale.price = 25
         sale.recipe = nil
+        sale.profit = sale.price - sale.cost
+        
         sale.date = Date()
         
-        return SaleOverview(sale: sale)
+        return SaleOverview(sale: sale).padding()
     }
 }

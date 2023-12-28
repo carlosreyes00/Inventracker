@@ -11,38 +11,76 @@ struct IngredientOverview: View {
     @ObservedObject var ingredient: Ingredient
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
+        HStack(alignment: .center) {
+            VStack(alignment: .leading, spacing: 0.5) {
+                
                 Text(ingredient.name ?? "no name")
+                    .font(.title2)
                     .bold()
-                    .lineLimit(1)
+//                    .lineLimit(2)
                 
-                Text("Slot: \(ingredient.slot?.name ?? "no name")")
-                    .lineLimit(1)
-                
-                HStack(spacing: 2) {
-                    Text(ingredient.quantity, format: .number.decimalSeparator(strategy: .automatic))
-                    Text(ingredient.unitOfMeasure.rawValue)
-                }
+                Text(String(format: "%.0f \(ingredient.unitOfMeasure.rawValue)", ingredient.quantity))
                 
                 Text(ingredient.cost, format: .currency(code: "USD"))
+                    .font(.footnote)
                 
-                if !ingredient.thereIsEnough {
-                    HStack(spacing: 2) {
-                        Text("need")
-                        Text(ingredient.neededQuantity, format: .number.decimalSeparator(strategy: .automatic))
-                        Text("more")
+                Group {
+                    if ingredient.thereIsEnough {
+                        HStack(spacing: 2) {
+                            Text("It's enough")
+                            Image(systemName: "checkmark")
+                        }
+                        .foregroundStyle(.green)
+                        .bold()
+                        
+                    } else {
+                        HStack(spacing: 2) {
+                            Text(String(format: "Need %.0f more", ingredient.quantity))
+                            Image(systemName: "xmark")
+                        }
+                        .foregroundStyle(.red)
+                        .bold()
                     }
                 }
+                .font(.caption2)
+                .fontWeight(.regular)
             }
+            
             Spacer()
+            
+            Image(systemName: "ellipsis.circle.fill")
+                .foregroundStyle(ingredient.thereIsEnough ? Color.green : Color.red)
+            
+            
         }
         .padding()
         .background {
             ingredient.thereIsEnough
-            ? Color.mint.opacity(0.2)
-            : Color.red.opacity(0.2)
+            ? Color.green.opacity(0.1)
+            : Color.red.opacity(0.1)
         }
         .cornerRadius(10)
     }
+}
+
+#Preview {
+    let ingredient1 = Ingredient(context: PersistenceController.preview.container.viewContext)
+    ingredient1.name = "Chocolate"
+    ingredient1.quantity = 100
+    ingredient1.unitOfMeasure = .grams
+    ingredient1.slot = Slot(context: PersistenceController.preview.container.viewContext)
+    ingredient1.slot?.name = ingredient1.name
+    
+    let ingredient2 = Ingredient(context: PersistenceController.preview.container.viewContext)
+    ingredient2.name = "Vanilla"
+    ingredient2.quantity = 0
+    ingredient2.unitOfMeasure = .grams
+    ingredient2.slot = Slot(context: PersistenceController.preview.container.viewContext)
+    ingredient2.slot?.name = ingredient2.name
+
+    return HStack {
+        IngredientOverview(ingredient: ingredient1)
+        IngredientOverview(ingredient: ingredient2)
+    }
+    .padding()
 }

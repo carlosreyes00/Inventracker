@@ -20,13 +20,8 @@ struct PurchaseOverview: View {
             Spacer()
             VStack (alignment: .trailing) {
                 Text(purchase.price, format: .currency(code: "USD"))
-                HStack(spacing: 2) {
-                    Text(purchase.availableQuantity, format: .number.decimalSeparator(strategy: .automatic))
-                    Text("/")
-                    Text(purchase.quantity, format: .number.decimalSeparator(strategy: .automatic))
-                    Text(purchase.slot?.unitOfMeasure.rawValue ?? "-1")
-                }
-                .foregroundColor(purchase.isFullyUsed ? .red : .primary)
+                Text(String(format: "%.2f / %.2f \(purchase.slot?.unitOfMeasure.rawValue ?? "-1")", purchase.availableQuantity, purchase.quantity))
+                    .foregroundColor(purchase.isFullyUsed ? .red : .primary)
             }
         }
     }
