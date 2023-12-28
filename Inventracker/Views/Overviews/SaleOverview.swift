@@ -21,21 +21,15 @@ struct SaleInfo: View {
             }
             
             HStack (alignment: .center) {
-                HStack(spacing: 3) {
-                    Text("Cost: ")
-                    Text(sale.cost, format: .currency(code: "USD"))
-                }
+//                HStack(spacing: 3) {
+//                    Text("Cost: ")
+//                    Text(sale.cost, format: .currency(code: "USD"))
+//                }
+                Text("Cost: \(Text(sale.cost, format: .currency(code: "USD")))")
                 Spacer()
-                HStack(spacing: 3) {
-                    Text("Price: ")
-                    Text(sale.price, format: .currency(code: "USD"))
-                }
+                Text("Price: \(Text(sale.price, format: .currency(code: "USD")))")
             }
-            
-            HStack(spacing: 3) {
-                Text("Profit: ")
-                Text(sale.profit, format: .currency(code: "USD"))
-            }
+            Text("Profit: \(Text(sale.profit, format: .currency(code: "USD")))")
             .bold()
             .foregroundColor(.green)
         }

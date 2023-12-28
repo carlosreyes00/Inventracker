@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IngredientInfo: View {
+struct IngredientOverview: View {
     @ObservedObject var ingredient: Ingredient
     
     var body: some View {
