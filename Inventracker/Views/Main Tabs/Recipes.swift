@@ -42,6 +42,7 @@ struct Recipes: View {
                     .disabled(undoManager == nil || !(undoManager!.canRedo))
                     .foregroundColor(undoManager!.canRedo ? .accentColor : .red)
                 }
+                
                 ToolbarItem(placement: .automatic) {
                     Button("Undo") {
                         undoManager!.undo()
@@ -49,6 +50,7 @@ struct Recipes: View {
                     .disabled(undoManager == nil || !(undoManager!.canUndo))
                     .foregroundColor(undoManager!.canUndo ? .accentColor : .red)
                 }
+                
                 ToolbarItem (placement: .primaryAction) {
                     Button {
                         showingNewRecipe = true
@@ -59,6 +61,7 @@ struct Recipes: View {
                         NewRecipe()
                     }
                 }
+                
                 ToolbarItem {
                     EditButton()
                 }
