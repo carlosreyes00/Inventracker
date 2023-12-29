@@ -51,6 +51,36 @@ extension Recipe {
             return false
         }
     }
+    
+    public func sale() {
+        guard canBeSold else { return }
+            
+        let ingredients = (self.ingredients?.allObjects ?? []) as! [Ingredient]
+        
+        for ingredient in ingredients {
+            print(ingredient.name ?? "N/A")
+            
+            var purchases = (ingredient.slot?.purchases?.allObjects ?? []) as! [Purchase]
+            purchases = purchases.sorted { $0.date! < $1.date! }
+            
+            var auxQ = ingredient.quantity
+            
+            for purchase in purchases {
+                if !purchase.isFullyUsed {
+                    let aux = Double.minimum(purchase.availableQuantity, auxQ)
+                    print("ingredient used: \(String(describing: purchase.slot?.name)) -> \(aux)")
+                    purchase.availableQuantity -= aux
+                    auxQ -= aux
+                    
+                    if auxQ == 0 {
+                        break
+                    }
+                }
+            }
+        }
+        
+        return
+    }
 }
 
 // MARK: Generated accessors for ingredients

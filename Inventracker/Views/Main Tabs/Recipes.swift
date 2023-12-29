@@ -81,6 +81,6 @@ struct Recipes: View {
     }
 }
 
-#Preview {
-    return Recipes().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-}
+//#Preview {
+//    return Recipes().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+//}

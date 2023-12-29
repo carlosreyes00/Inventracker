@@ -38,12 +38,12 @@ struct NewSale: View {
             .toolbar {
                 ToolbarItem {
                     Button {
+                        dismiss()
                         addSale(date: date, recipe: recipe, price: Double(price)!)
-                        
+                        recipe.sale()
                         date = Date()
                         price.removeAll()
-                        
-                        dismiss()
+                        print("it was sold successfully")
                     } label: {
                         Label("Add", systemImage: "plus.circle")
                             .labelStyle(.titleOnly)
