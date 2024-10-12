@@ -26,9 +26,9 @@ struct ContentView: View {
                     Label("Sales", systemImage: "chart.line.uptrend.xyaxis")
                 }
             
-            Managment()
+            Management()
                 .tabItem {
-                    Label("Managment", systemImage: "books.vertical")
+                    Label("Management", systemImage: "books.vertical")
                 }
         }
     }

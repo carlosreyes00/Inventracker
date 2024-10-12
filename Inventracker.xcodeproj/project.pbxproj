@@ -25,7 +25,7 @@
 		12BC13FD2A4125D3005E8542 /* RecipeDistributionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC13FC2A4125D3005E8542 /* RecipeDistributionChart.swift */; };
 		12BFEC292A393E5E00A69872 /* CMForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BFEC282A393E5E00A69872 /* CMForTests.swift */; };
 		12BFEC2B2A393FAD00A69872 /* IngredientOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BFEC2A2A393FAD00A69872 /* IngredientOverview.swift */; };
-		12C9CB2F29E5E35100F37F47 /* Managment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9CB2E29E5E35100F37F47 /* Managment.swift */; };
+		12C9CB2F29E5E35100F37F47 /* Management.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9CB2E29E5E35100F37F47 /* Management.swift */; };
 		12D2A27229E7052B007CE4AA /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2A27129E7052B007CE4AA /* Enums.swift */; };
 		12D7EE9929DB57BA00D28196 /* InventrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D7EE9829DB57BA00D28196 /* InventrackerApp.swift */; };
 		12D7EE9B29DB57BA00D28196 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D7EE9A29DB57BA00D28196 /* ContentView.swift */; };
@@ -59,7 +59,7 @@
 		12BC13FC2A4125D3005E8542 /* RecipeDistributionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDistributionChart.swift; sourceTree = "<group>"; };
 		12BFEC282A393E5E00A69872 /* CMForTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMForTests.swift; sourceTree = "<group>"; };
 		12BFEC2A2A393FAD00A69872 /* IngredientOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientOverview.swift; sourceTree = "<group>"; };
-		12C9CB2E29E5E35100F37F47 /* Managment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managment.swift; sourceTree = "<group>"; };
+		12C9CB2E29E5E35100F37F47 /* Management.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Management.swift; sourceTree = "<group>"; };
 		12D2A27129E7052B007CE4AA /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		12D7EE9529DB57BA00D28196 /* Inventracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D7EE9829DB57BA00D28196 /* InventrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventrackerApp.swift; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 				12355C8229DF12B200E9E1AE /* Recipes.swift */,
 				12355C8029DF126000E9E1AE /* Purchases.swift */,
 				1205272129E4933100773336 /* Sales.swift */,
-				12C9CB2E29E5E35100F37F47 /* Managment.swift */,
+				12C9CB2E29E5E35100F37F47 /* Management.swift */,
 			);
 			path = "Main Tabs";
 			sourceTree = "<group>";
@@ -296,7 +296,7 @@
 				12D7EEA529DB57BB00D28196 /* Inventracker.xcdatamodeld in Sources */,
 				12586E8B29E4D4A300E450B6 /* NewPurchase.swift in Sources */,
 				12D7EE9B29DB57BA00D28196 /* ContentView.swift in Sources */,
-				12C9CB2F29E5E35100F37F47 /* Managment.swift in Sources */,
+				12C9CB2F29E5E35100F37F47 /* Management.swift in Sources */,
 				12D7EEAC29DB5BF400D28196 /* NewIngredient.swift in Sources */,
 				120D27AE29F71C7200F4B8E6 /* NewSale.swift in Sources */,
 				12A720CC29FC065800CD6AF1 /* Ingredient+CoreDataProperties.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  ContextManagment.swift
+//  ContextManagement.swift
 //  Inventracker
 //
 //  Created by Carlos Rafael Reyes Magadán on 4/6/23.

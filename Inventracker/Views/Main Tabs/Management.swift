@@ -1,5 +1,5 @@
 //
-//  Managment.swift
+//  Management.swift
 //  Inventracker
 //
 //  Created by Carlos Rafael Reyes Magadán on 4/11/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Managment: View {
+struct Management: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
